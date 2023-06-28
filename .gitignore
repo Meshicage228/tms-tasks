@@ -3,7 +3,11 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
-
+### Personal Settings ###
+.gitignore
+/.idea/gradle.xml
+/.idea/misc.xml
+/.idea/vcs.xml
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
