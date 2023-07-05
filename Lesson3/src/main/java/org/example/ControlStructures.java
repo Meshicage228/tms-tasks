@@ -9,24 +9,16 @@ public class ControlStructures {
         // 1.
         Scanner scan = new Scanner(System.in);
         switch (scan.nextInt()){
-            case 12:
-            case 1:
-            case 2:
+            case 12,1,2:
                 System.out.println("Winter");
                 break;
-            case 3:
-            case 4:
-            case 5:
+            case 3,4,5:
                 System.out.println("Spring");
                 break;
-            case 6:
-            case 7:
-            case 8:
+            case 6,7,8:
                 System.out.println("Summer");
                 break;
-            case 9:
-            case 10:
-            case 11:
+            case 9,10,11:
                 System.out.println("Autumn");
                 break;
             default:
@@ -47,8 +39,9 @@ public class ControlStructures {
             else System.out.println("Wrong number");
 
         //3
-            if(scan.nextInt() % 2 == 0) System.out.println("The number is even");
-            else System.out.println("The number is odd");
+
+            String result = scan.nextInt() % 2 == 0 ? "Is even" : "Is odd";
+            System.out.println(result);
 
         //4
             int t = scan.nextInt();
