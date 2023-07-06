@@ -6,9 +6,27 @@ public class ControlStructures {
     public static void main(String[] args) {
 
            /*  Управляющие конструкции  */
+
+        ControlStructures tasks = new ControlStructures();
+
         // 1.
-        Scanner scan = new Scanner(System.in);
-        switch (scan.nextInt()){
+
+        tasks.TimeOfYear();
+
+        // 2.
+
+        tasks.TimeOfYearIfStructure();
+
+        //3
+
+        tasks.NumberOddOrEven();
+
+        //4
+
+        tasks.FeelingOfTemperature();
+    }
+    public void TimeOfYear(){
+        switch (EnterNumber()){
             case 12,1,2:
                 System.out.println("Winter");
                 break;
@@ -24,31 +42,32 @@ public class ControlStructures {
             default:
                 System.out.println("Wrong number");
         }
+    }
+    public void TimeOfYearIfStructure(){
+        int expectedMonth = EnterNumber();
 
-        // 2.
-            int expectedMonth = scan.nextInt();
+        if(expectedMonth == 12 || expectedMonth == 1 || expectedMonth == 2)
+            System.out.println("Winter");
+        else if (expectedMonth > 2 && expectedMonth < 6)
+            System.out.println("Spring");
+        else if (expectedMonth > 5 && expectedMonth < 9)
+            System.out.println("Summer");
+        else if (expectedMonth > 8 && expectedMonth < 12)
+            System.out.println("Autumn");
+        else System.out.println("Wrong number");
+    }
+    public void NumberOddOrEven(){
+        String result = EnterNumber() % 2 == 0 ? "Is even" : "Is odd";
+        System.out.println(result);
+    }
+    public void FeelingOfTemperature(){
+        int t = EnterNumber();
 
-            if(expectedMonth == 12 || expectedMonth == 1 || expectedMonth == 2)
-                System.out.println("Winter");
-            else if (expectedMonth > 2 && expectedMonth < 6)
-                System.out.println("Spring");
-            else if (expectedMonth > 5 && expectedMonth < 9)
-                System.out.println("Summer");
-            else if (expectedMonth > 8 && expectedMonth < 12)
-                System.out.println("Autumn");
-            else System.out.println("Wrong number");
-
-        //3
-
-            String result = scan.nextInt() % 2 == 0 ? "Is even" : "Is odd";
-            System.out.println(result);
-
-        //4
-            int t = scan.nextInt();
-
-            if(t > -5) System.out.println("Тепло");
-            else if (t <= -5 && t > -20) System.out.println("Нормально");
-            else if (t <= -20) System.out.println("Холодно");
-
+        if(t > -5) System.out.println("Тепло");
+        else if (t <= -5 && t > -20) System.out.println("Нормально");
+        else if (t <= -20) System.out.println("Холодно");
+    }
+    private static int EnterNumber(){
+        return new Scanner(System.in).nextInt();
     }
 }

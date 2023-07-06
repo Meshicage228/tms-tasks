@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Additional {
     public static void main(String[] args) {
         /*  Дополнительные задания  */
+
         Additional tasks = new Additional();
 
         //1. Таблица умножения
