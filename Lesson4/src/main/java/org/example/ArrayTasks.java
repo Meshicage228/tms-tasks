@@ -63,6 +63,7 @@ public class ArrayTasks {
 
         tasks.CompareTwoArrays(arr, arr2);
     }
+            /*  Методы  */
     public int NumberExistsOrNot(int[] arr, int key){
         int index = -1;
         for(int i = 0 ; i < arr.length; i++){
