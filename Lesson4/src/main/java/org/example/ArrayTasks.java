@@ -10,7 +10,7 @@ public class ArrayTasks {
         ArrayTasks tasks = new ArrayTasks();
 
         int[] arr;
-        int[] arr2 = new int[0];
+        int[] arr2;
 
        //1. Проверка на вхождение числа
 
@@ -39,11 +39,11 @@ public class ArrayTasks {
             if(index == -1) System.out.println("Number doesnt exist");
         }while(index == -1);
 
-        tasks.DeleteAllMatches(arr, arr2, toDelete);
+        tasks.DeleteAllMatches(arr,toDelete);
 
         //3. Максимальное / Минимальное / Среднее значение массива с введенным размером
 
-        int size = 0;
+        int size;
         do{
             System.out.print("Write size of array : ");
             size = EnterNumber();
@@ -74,13 +74,13 @@ public class ArrayTasks {
         }
         return index;
     }
-    public void DeleteAllMatches(int[] src, int[]dest, int key){
+    public void DeleteAllMatches(int[] src, int key){
         int size = 0;
 
         for (int j : src) {
             if (j != key) size++;
         }
-        dest = new int[size];
+        int[] dest = new int[size];
         size = 0;
         for (int j : src) {
             if (j != key) {
