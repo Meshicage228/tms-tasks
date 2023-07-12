@@ -10,6 +10,9 @@ public class CreditCard {
     public CreditCard(String accountNumber) {
         this(accountNumber, 0);
     }
+    public CreditCard(float amountOfMoney){
+        this("0", amountOfMoney);
+    }
 
     public CreditCard(String accountNumber, float amountOfMoney) {
         this.accountNumber = accountNumber;
@@ -31,7 +34,7 @@ public class CreditCard {
     }
 
     private boolean checkAmountOfMoney(float toSubtract) {
-        return amountOfMoney > toSubtract;
+        return amountOfMoney >= toSubtract;
     }
 
     public String getAccountNumber() {
