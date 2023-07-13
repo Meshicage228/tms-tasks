@@ -18,4 +18,14 @@ public class Computer {
         this.hdd = hdd;
         this.ram = ram;
     }
+
+    @Override
+    public String toString() {
+        return "Computer{" +
+                "cost=" + cost +
+                ", model='" + model + '\'' +
+                ", hdd=" + hdd +
+                ", ram=" + ram +
+                '}';
+    }
 }
