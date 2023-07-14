@@ -5,8 +5,8 @@ import comm.tms.AdditionalTask.Service.Document;
 import java.util.Date;
 
 public class FinanceDoc extends Document{
-    String departmentCode;
-    float totalSum;
+    private String departmentCode;
+    private float totalSum;
 
     public FinanceDoc() {
     }

@@ -5,8 +5,8 @@ import comm.tms.AdditionalTask.Service.Document;
 import java.util.Date;
 
 public class ContractWithWorker extends Document{
-    Date endOfContract;
-    String nameOfWorker;
+    private Date endOfContract;
+    private String nameOfWorker;
 
     public ContractWithWorker() {
     }

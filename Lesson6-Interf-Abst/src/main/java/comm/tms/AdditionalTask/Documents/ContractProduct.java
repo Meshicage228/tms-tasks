@@ -5,8 +5,8 @@ import comm.tms.AdditionalTask.Service.Document;
 import java.util.Date;
 
 public class ContractProduct extends Document{
-    String typeOfProduct;
-    int amountOfProduct;
+    private String typeOfProduct;
+    private int amountOfProduct;
 
     public ContractProduct() {
     }
