@@ -3,12 +3,12 @@ package comm.tms.additional.Task1.objectTask1;
 public class HDD {
     String title;
     float volume;
-    String type;
+    TypeOfHdd type;
 
     public HDD() {
     }
 
-    public HDD(String title, float volume, String type) {
+    public HDD(String title, float volume, TypeOfHdd type) {
         this.title = title;
         this.volume = volume;
         this.type = type;
