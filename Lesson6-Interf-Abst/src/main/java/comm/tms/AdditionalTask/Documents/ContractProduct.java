@@ -1,11 +1,10 @@
 package comm.tms.AdditionalTask.Documents;
 
-import comm.tms.AdditionalTask.Service.DocumentInter;
 import comm.tms.AdditionalTask.Service.Document;
 
 import java.util.Date;
 
-public class ContractProduct extends Document implements DocumentInter {
+public class ContractProduct extends Document{
     String typeOfProduct;
     int amountOfProduct;
 
