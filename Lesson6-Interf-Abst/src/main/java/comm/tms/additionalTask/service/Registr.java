@@ -1,4 +1,4 @@
-package comm.tms.AdditionalTask.Service;
+package comm.tms.additionalTask.service;
 public class Registr {
     private Document[] documents = new Document[10];
     private int index = 0;

@@ -1,6 +1,6 @@
-package comm.tms.MainTask.Task2.People;
+package comm.tms.mainTask.task2.People;
 
-import comm.tms.MainTask.Task2.Service.PostInterface;
+import comm.tms.mainTask.task2.Service.PostInterface;
 
 public class Worker implements PostInterface {
     public Worker() {

@@ -1,6 +1,6 @@
-package comm.tms.MainTask.Task1.Figures;
+package comm.tms.mainTask.task1.figures;
 
-import comm.tms.MainTask.Task1.service.SolveFigure;
+import comm.tms.mainTask.task1.service.SolveFigure;
 
 public class Triangle extends SolveFigure {
     private float side;
@@ -15,7 +15,6 @@ public class Triangle extends SolveFigure {
         this.area = (float) (0.5 * side * height);
         this.perimetr = side * 3;
     }
-
     @Override
     public float getPerimetr() {
         return this.perimetr;

@@ -1,6 +1,6 @@
-package comm.tms.MainTask.Task1.Figures;
+package comm.tms.mainTask.task1.figures;
 
-import comm.tms.MainTask.Task1.service.SolveFigure;
+import comm.tms.mainTask.task1.service.SolveFigure;
 
 public class Rectangle extends SolveFigure {
     private float width;
@@ -19,4 +19,5 @@ public class Rectangle extends SolveFigure {
     public float getPerimetr() {
         return this.perimetr;
     }
+
 }

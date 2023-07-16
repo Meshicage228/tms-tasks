@@ -1,6 +1,6 @@
-package comm.tms.AdditionalTask.Documents;
+package comm.tms.additionalTask.documents;
 
-import comm.tms.AdditionalTask.Service.Document;
+import comm.tms.additionalTask.service.Document;
 
 import java.util.Date;
 

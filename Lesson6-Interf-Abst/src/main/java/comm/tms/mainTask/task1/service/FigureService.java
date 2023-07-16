@@ -1,4 +1,4 @@
-package comm.tms.MainTask.Task1.service;
+package comm.tms.mainTask.task1.service;
 
 public class FigureService {
     public float calculate(SolveFigure... figures) {

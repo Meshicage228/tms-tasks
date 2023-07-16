@@ -1,9 +1,9 @@
-import comm.tms.AdditionalTask.Documents.*;
-import comm.tms.MainTask.Task1.Figures.*;
-import comm.tms.AdditionalTask.Service.Registr;
-import comm.tms.AdditionalTask.Service.*;
-import comm.tms.MainTask.Task1.service.*;
-import comm.tms.MainTask.Task2.People.*;
+import comm.tms.additionalTask.documents.*;
+import comm.tms.mainTask.task1.figures.*;
+import comm.tms.additionalTask.service.Registr;
+import comm.tms.additionalTask.service.*;
+import comm.tms.mainTask.task1.service.*;
+import comm.tms.mainTask.task2.People.*;
 
 import java.util.Date;
 

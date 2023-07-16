@@ -1,6 +1,6 @@
-package comm.tms.MainTask.Task1.Figures;
+package comm.tms.mainTask.task1.figures;
 
-import comm.tms.MainTask.Task1.service.SolveFigure;
+import comm.tms.mainTask.task1.service.SolveFigure;
 
 public class Circle extends SolveFigure {
     private float radius;
