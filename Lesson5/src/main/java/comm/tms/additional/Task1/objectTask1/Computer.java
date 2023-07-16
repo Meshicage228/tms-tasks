@@ -1,10 +1,10 @@
 package comm.tms.additional.Task1.objectTask1;
 
 public class Computer {
-    float cost;
-    String model;
-    HDD hdd;
-    RAM ram;
+    private float cost;
+    private String model;
+    private HDD hdd;
+    private RAM ram;
 
     public Computer() {
     }

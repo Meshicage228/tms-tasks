@@ -26,33 +26,12 @@ public class CreditCard {
 
     public void subtractMoney(float amountOfMoney) {
         if(amountOfMoney < 0) return;
-        if (checkAmountOfMoney(amountOfMoney)) {
+        if (this.amountOfMoney >= amountOfMoney) {
             this.amountOfMoney -= amountOfMoney;
         } else {
             System.out.println("Your amount of money is " + this.amountOfMoney + " you cannot subtract " + amountOfMoney);
         }
     }
-
-    private boolean checkAmountOfMoney(float toSubtract) {
-        return amountOfMoney >= toSubtract;
-    }
-
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public float getAmountOfMoney() {
-        return amountOfMoney;
-    }
-
-    public void setAmountOfMoney(float amountOfMoney) {
-        this.amountOfMoney = amountOfMoney;
-    }
-
     @Override
     public String toString() {
         return "CreditCard{" +

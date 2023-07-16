@@ -1,8 +1,8 @@
 package comm.tms.additional.Task1.objectTask1;
 
 public class RAM {
-    String title;
-    float volume;
+    private String title;
+    private float volume;
 
     public RAM() {
     }

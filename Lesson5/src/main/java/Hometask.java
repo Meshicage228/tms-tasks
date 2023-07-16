@@ -2,7 +2,7 @@ import comm.tms.additional.Task1.objectTask1.*;
 import comm.tms.additional.Task2.objectTask2.CashMachine;
 import comm.tms.hometask.object.CreditCard;
 
-public class Main {
+public class Hometask {
     public static void main(String[] args) {
         //1. Кредитная карточка
         CreditCard firstCard = new CreditCard(2600);

@@ -1,9 +1,9 @@
 package comm.tms.additional.Task1.objectTask1;
 
 public class HDD {
-    String title;
-    float volume;
-    TypeOfHdd type;
+    private String title;
+    private float volume;
+    private TypeOfHdd type;
 
     public HDD() {
     }
