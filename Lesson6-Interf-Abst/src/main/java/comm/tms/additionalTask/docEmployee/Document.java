@@ -1,8 +1,10 @@
-package comm.tms.additionalTask.service;
+package comm.tms.additionalTask.docEmployee;
+
+import comm.tms.additionalTask.serviceDocument.DocumentInter;
 
 import java.util.Date;
 
-public abstract class Document implements DocumentInter{
+public abstract class Document implements DocumentInter {
     protected int numberOfDocument;
     protected Date data;
 

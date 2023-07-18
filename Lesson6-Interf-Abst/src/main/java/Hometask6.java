@@ -1,18 +1,18 @@
-import comm.tms.additionalTask.documents.*;
-import comm.tms.mainTask.task1.figures.*;
-import comm.tms.additionalTask.service.Registr;
-import comm.tms.additionalTask.service.*;
-import comm.tms.mainTask.task1.service.*;
-import comm.tms.mainTask.task2.People.*;
+import comm.tms.additionalTask.docEmployee.*;
+import comm.tms.additionalTask.serviceDocument.*;
+import comm.tms.mainTask.task1.figuresService.*;
+import comm.tms.mainTask.task1.mathFigures.*;
+import comm.tms.mainTask.task2.people.*;
+import comm.tms.mainTask.task2.peopleService.*;
 
 import java.util.Date;
 
-public class HomeTask {
+public class Hometask6 {
     public static void main(String[] args) {
         //1.
-        SolveFigure triangle = new Triangle(12,2.5f);
-        SolveFigure rectangle = new Rectangle(5,10);
-        SolveFigure rectangle2 = new Rectangle(12,3);
+        SolveFigure triangle = new Triangle(12, 2.5f);
+        SolveFigure rectangle = new Rectangle(5, 10);
+        SolveFigure rectangle2 = new Rectangle(12, 3);
         SolveFigure circle = new Circle(15);
         SolveFigure circle2 = new Circle(3);
 
@@ -24,9 +24,10 @@ public class HomeTask {
 
         //2.
 
-        new Director();
-        new Accountant();
-        new Worker();
+        new Director(Post.DIRECTOR);
+        new Accountant(Post.ACCOUNTANT);
+        new Worker(Post.WORKER);
+
 
         //3.
 

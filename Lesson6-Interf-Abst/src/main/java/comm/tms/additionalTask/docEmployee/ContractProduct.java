@@ -1,6 +1,4 @@
-package comm.tms.additionalTask.documents;
-
-import comm.tms.additionalTask.service.Document;
+package comm.tms.additionalTask.docEmployee;
 
 import java.util.Date;
 

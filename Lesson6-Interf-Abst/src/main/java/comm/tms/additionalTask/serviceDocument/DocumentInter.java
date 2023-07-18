@@ -1,4 +1,4 @@
-package comm.tms.additionalTask.service;
+package comm.tms.additionalTask.serviceDocument;
 
 public interface DocumentInter {
      void getDocInfo();
