@@ -18,13 +18,16 @@ public class Phone {
         this.number = number;
         this.model = model;
     }
-    public void receiveCall(String name){
+
+    public void receiveCall(String name) {
         System.out.println("Звонит " + name);
     }
-    public void receiveCall(String name, String number){
+
+    public void receiveCall(String name, String number) {
         System.out.println(number + " звонит " + name);
     }
-    public void sendMessage(String... number){
+
+    public void sendMessage(String... number) {
         for (String num : number) {
             System.out.println("To the number " + num + " was send message");
         }
