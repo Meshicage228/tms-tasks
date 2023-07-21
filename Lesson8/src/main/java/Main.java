@@ -12,20 +12,22 @@ public class Main {
         Worker worker5 = new Worker("Vlad5", "Chel3", 1.2f, Post.WORKER);
 
 
-
-       /* mainDirector.showSubordinates();*/
+        mainDirector.addWorker(worker1, worker2);
+        mainDirector.showSubordinates();
+        System.out.println("After add a new director : ");
 
 
         Director director1 = new Director("Gustavo1", "Fring2", 2.5f, Post.DIRECTOR);
         Director director2 = new Director("Gustavo2", "Fring3", 5, Post.DIRECTOR);
 
-        mainDirector.addDirector(director1, director2);
 
+        mainDirector.addDirector(director1);
 
         director1.addWorker(worker3, worker4);
-        director2.addWorker(worker1, worker2);
+        director1.addDirector(director2);
+        director2.addWorker(worker5);
 
-        EmployeeService.showInfoFromDirector(mainDirector); // Инфо о всех вложенных директорах и их подчиненных
+        EmployeeService.showInfoFromDirector(mainDirector);
 
         System.out.println(EmployeeService.findWorkerByName(mainDirector, "Vlad4"));
         System.out.println(EmployeeService.findWorkerByName(director1, "Vlad3"));
