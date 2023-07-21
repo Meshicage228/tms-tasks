@@ -21,13 +21,12 @@ public class Main {
 
 
         mainDirector.addDirector(director1);
-        mainDirector.showSubordinates();
 
         director1.addWorker(worker3, worker4);
         director1.addDirector(director2);
         director2.addWorker(worker5);
 
-        director1.showSubordinates();
+        EmployeeService.showInfoFromDirector(mainDirector);
 
         System.out.println(EmployeeService.findWorkerByName(mainDirector, "Vlad4"));
         System.out.println(EmployeeService.findWorkerByName(director1, "Vlad3"));

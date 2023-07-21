@@ -39,4 +39,13 @@ public abstract class EmployeeService {
             } else break;
         }
     }
+    public static void showInfoFromDirector(Director currentDirector){
+        for (Director nextDirector : currentDirector.getDirectors()) {
+                if (nextDirector != null) {
+                    nextDirector.showSubordinates();
+                    showInfoFromDirector(nextDirector);
+                }
+                else break;
+            }
+        }
 }
