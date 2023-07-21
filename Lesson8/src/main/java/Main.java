@@ -15,11 +15,14 @@ public class Main {
         mainDirector.addWorker(worker1, worker2);
         mainDirector.showSubordinates();
 
+
         Director director1 = new Director("Gustavo1", "Fring2", 2.5f, Post.DIRECTOR);
         Director director2 = new Director("Gustavo2", "Fring3", 5, Post.DIRECTOR);
 
 
         mainDirector.addDirector(director1);
+        mainDirector.showSubordinates();
+
         director1.addWorker(worker3, worker4);
         director1.addDirector(director2);
         director2.addWorker(worker5);

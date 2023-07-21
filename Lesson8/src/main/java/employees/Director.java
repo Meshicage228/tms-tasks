@@ -12,7 +12,6 @@ public class Director extends Employee {
         super(name, surname, workExperience, post);
 
     }
-
     @Override
     public float calculateSalary() {
         int countPeople = countSubordinates();

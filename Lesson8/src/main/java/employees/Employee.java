@@ -26,5 +26,4 @@ public abstract class Employee {
     public float calculateSalary() {
         return post.getCoef() * baseRate * workExperience;
     }
-
 }
