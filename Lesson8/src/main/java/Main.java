@@ -26,7 +26,7 @@ public class Main {
         director1.addDirector(director2);
         director2.addWorker(worker5);
 
-        EmployeeService.showInfoFromDirector(mainDirector);
+        EmployeeService.showInfoFromDirector(mainDirector); // Инфо о всех вложенных директорах и их подчиненных
 
         System.out.println(EmployeeService.findWorkerByName(mainDirector, "Vlad4"));
         System.out.println(EmployeeService.findWorkerByName(director1, "Vlad3"));
