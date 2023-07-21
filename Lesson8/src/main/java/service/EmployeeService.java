@@ -41,6 +41,7 @@ public abstract class EmployeeService {
     }
     public static void showInfoFromDirector(Director currentDirector){
         currentDirector.showSubordinates();
+        System.out.println("..............................................");
         for (Director nextDirector : currentDirector.getDirectors()) {
                 if (nextDirector != null) {
                     showInfoFromDirector(nextDirector);
