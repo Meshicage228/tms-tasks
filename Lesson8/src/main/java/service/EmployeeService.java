@@ -40,9 +40,9 @@ public abstract class EmployeeService {
         }
     }
     public static void showInfoFromDirector(Director currentDirector){
+        currentDirector.showSubordinates();
         for (Director nextDirector : currentDirector.getDirectors()) {
                 if (nextDirector != null) {
-                    nextDirector.showSubordinates();
                     showInfoFromDirector(nextDirector);
                 }
                 else break;
