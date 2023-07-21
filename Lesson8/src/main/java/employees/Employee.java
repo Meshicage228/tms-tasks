@@ -23,7 +23,7 @@ public abstract class Employee {
         this.post = post;
     }
 
-    public float calculateSalary(){
+    public float calculateSalary() {
         return post.getCoef() * baseRate * workExperience;
     }
 
