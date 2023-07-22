@@ -23,7 +23,7 @@ public class Main {
 
         mainDirector.addDirector(director1);
 
-        director1.addWorker(worker3, worker4);
+        director1.addWorker(worker3);
         director1.addDirector(director2);
         director2.addWorker(worker5);
 
