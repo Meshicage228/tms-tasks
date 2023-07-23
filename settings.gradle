@@ -2,6 +2,8 @@ rootProject.name = 'tms-tasks'
 include 'Lesson1'
 include 'Lesson4'
 include 'Lesson3'
+include 'Lesson6-Interf-Abst'
 include 'Lesson5'
+include 'Lesson7'
 include 'Lesson8'
 
