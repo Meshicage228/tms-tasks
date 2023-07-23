@@ -3,7 +3,7 @@ package comm.tms.Hometask.additional.object;
 import comm.tms.Hometask.additional.service.Doctor;
 
 public abstract class PatientService {
-    public static void AppointDoctor(Patient patient) {
+    public static void appointDoctor(Patient patient) {
         switch (patient.getMethodOfTherapy()) {
             case CODE1: {
                 patient.addDoctorToArray(new Surgeon());
@@ -20,7 +20,7 @@ public abstract class PatientService {
     }
 
     public static void showHealMethod(Patient patient) {
-        if (patient.getDoctors().length == 0) {
+        if (patient.getDoctors()[0] == 0) {
             System.out.println("No doctors added !");
             return;
         }
