@@ -1,7 +1,7 @@
-package employees;
+package realisationN1.employees;
 
-import service.EmployeeService;
-import service.Post;
+import realisationN1.service.EmployeeService;
+import realisationN1.service.Post;
 
 public class Director extends Employee {
     private Director[] directors = new Director[5];

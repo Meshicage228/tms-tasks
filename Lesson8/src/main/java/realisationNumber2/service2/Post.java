@@ -1,4 +1,4 @@
-package service;
+package realisationNumber2.service2;
 
 public enum Post {
     DIRECTOR(2.5f),

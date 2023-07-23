@@ -1,6 +1,7 @@
-package employees;
+package realisationNumber2.employees2;
 
-import service.Post;
+
+import realisationNumber2.service2.Post;
 
 public abstract class Employee {
     protected final int baseRate = 1000;
@@ -9,7 +10,8 @@ public abstract class Employee {
     protected float workExperience;
     protected Post post;
 
-    public Employee() {
+    public Post getPost() {
+        return post;
     }
 
     public String getName() {
@@ -25,5 +27,16 @@ public abstract class Employee {
 
     public float calculateSalary() {
         return post.getCoef() * baseRate * workExperience;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "baseRate=" + baseRate +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", workExperience=" + workExperience +
+                ", post=" + post +
+                '}';
     }
 }

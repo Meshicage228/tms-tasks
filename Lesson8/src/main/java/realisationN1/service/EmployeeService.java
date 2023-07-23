@@ -1,7 +1,7 @@
-package service;
+package realisationN1.service;
 
-import employees.Director;
-import employees.Worker;
+import realisationN1.employees.Director;
+import realisationN1.employees.Worker;
 
 public abstract class EmployeeService {
     public static boolean findWorkerByName(Director currentDirector, String name) {
