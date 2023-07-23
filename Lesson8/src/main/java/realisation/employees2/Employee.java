@@ -1,7 +1,7 @@
-package realisationNumber2.employees2;
+package realisation.employees2;
 
 
-import realisationNumber2.service2.Post;
+import realisation.service2.Post;
 
 public abstract class Employee {
     protected final int baseRate = 1000;
@@ -18,25 +18,14 @@ public abstract class Employee {
         return name;
     }
 
-    public Employee(String name, String surname, float workExperience, Post post) {
+    public Employee(String name, String surname, float workExperience) {
         this.name = name;
         this.surname = surname;
         this.workExperience = workExperience;
-        this.post = post;
     }
 
     public float calculateSalary() {
         return post.getCoef() * baseRate * workExperience;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "baseRate=" + baseRate +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", workExperience=" + workExperience +
-                ", post=" + post +
-                '}';
-    }
 }

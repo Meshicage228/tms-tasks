@@ -1,10 +1,11 @@
-package realisationNumber2.employees2;
+package realisation.employees2;
 
-import realisationNumber2.service2.Post;
+import realisation.service2.Post;
 
 public class Worker extends Employee {
-    public Worker(String name, String surname, float workExperience, Post post) {
-        super(name, surname, workExperience, post);
+    public Worker(String name, String surname, float workExperience) {
+        super(name, surname, workExperience);
+        this.post = Post.WORKER;
     }
 
     @Override

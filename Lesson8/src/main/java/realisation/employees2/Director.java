@@ -1,14 +1,14 @@
-package realisationNumber2.employees2;
+package realisation.employees2;
 
 
-import realisationNumber2.service2.*;
+import realisation.service2.*;
 
 public class Director extends Employee {
     Employee[] employeeArr = new Employee[12];
 
-    public Director(String name, String surname, float workExperience, Post post) {
-        super(name, surname, workExperience, post);
-
+    public Director(String name, String surname, float workExperience) {
+        super(name, surname, workExperience);
+        this.post = Post.DIRECTOR;
     }
 
     @Override
@@ -43,11 +43,6 @@ public class Director extends Employee {
 
     public Employee[] getEmployeeArr() {
         return employeeArr;
-    }
-
-    public void showSubordinates() {
-        System.out.println(this + "\n" + "Sabordinates : ");
-        EmployeeService.showInfo(this.getEmployeeArr());
     }
 
     @Override
