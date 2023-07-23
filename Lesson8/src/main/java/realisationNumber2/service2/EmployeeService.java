@@ -7,18 +7,18 @@ public abstract class EmployeeService {
     public static boolean findWorkerByName(Director currentDirector, String name) {
         for (Employee employee : currentDirector.getEmployeeArr()) {
             if (employee != null) {
-                switch (employee.getPost()) {
+                switch (employee.getPost()) { // Можно было и без switch 
                     case WORKER: {
-                        if (employee.getName().equals(name)) {
+                        if (employee.getName().equals(name)) { // Оставить это 
                             return true;
                         }
                         break;
                     }
                     case DIRECTOR: {
-                        if (employee.getName().equals(name)) {
+                        if (employee.getName().equals(name)) { // Убрать это
                             return true;
                         }
-                        return findWorkerByName((Director) employee, name);
+                        return findWorkerByName((Director) employee, name); // Заменить на это if(employee.getPost().equals(Post.Director)){  return findWorkerByName((Director) employee, name)}
                     }
                 }
             } else break;
