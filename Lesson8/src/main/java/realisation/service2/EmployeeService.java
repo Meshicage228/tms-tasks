@@ -10,10 +10,12 @@ public abstract class EmployeeService {
                 if (employee.getName().equals(name)) {
                     return true;
                 }
-                else if(employee.getPost().equals(Post.DIRECTOR)){
+                else if(employee.getPost() == Post.DIRECTOR){
                     return findWorkerByName((Director) employee, name);
                 }
-            } else break;
+            } else {
+                break;
+            }
         }
         return false;
     }
@@ -22,11 +24,13 @@ public abstract class EmployeeService {
         System.out.println(director.toString());
         for (Employee employee : director.getEmployeeArr()) {
             if (employee != null) {
-                if (employee.getPost().equals(Post.DIRECTOR)) {
+                if (employee.getPost() == Post.DIRECTOR) {
                     showInfoFromDirector((Director) employee);
                 }
                 else System.out.println(employee.toString());
-            } else break;
+            } else {
+                break;
+            }
         }
     }
 }

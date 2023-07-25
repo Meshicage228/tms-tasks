@@ -5,7 +5,11 @@ import realisation.service2.Post;
 public class Worker extends Employee {
     public Worker(String name, String surname, float workExperience) {
         super(name, surname, workExperience);
-        this.post = Post.WORKER;
+    }
+
+    @Override
+    public Post getPost() {
+        return Post.WORKER;
     }
 
     @Override

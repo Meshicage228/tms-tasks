@@ -8,11 +8,8 @@ public abstract class Employee {
     protected String name;
     protected String surname;
     protected float workExperience;
-    protected Post post;
 
-    public Post getPost() {
-        return post;
-    }
+    public abstract Post getPost();
 
     public String getName() {
         return name;
@@ -25,7 +22,7 @@ public abstract class Employee {
     }
 
     public float calculateSalary() {
-        return post.getCoef() * baseRate * workExperience;
+        return getPost().getCoef() * baseRate * workExperience;
     }
 
 }

@@ -8,7 +8,6 @@ public class Director extends Employee {
 
     public Director(String name, String surname, float workExperience) {
         super(name, surname, workExperience);
-        this.post = Post.DIRECTOR;
     }
 
     @Override
@@ -30,7 +29,6 @@ public class Director extends Employee {
             }
         }
     }
-
     private int countSubordinates() {
         int counter = 0;
         for (Employee empl : employeeArr) {
@@ -43,6 +41,11 @@ public class Director extends Employee {
 
     public Employee[] getEmployeeArr() {
         return employeeArr;
+    }
+
+    @Override
+    public Post getPost() {
+        return Post.DIRECTOR;
     }
 
     @Override

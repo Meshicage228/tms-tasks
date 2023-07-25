@@ -6,10 +6,10 @@ public class Main2 {
     public static void main(String[] args) {
         Director mainDirector = new Director("MainGustavo", "Fring1", 6);
 
-        Worker worker1 = new Worker("Vlad1", "Chel1", 0.7f);
-        Worker worker2 = new Worker("Vlad2", "Chel2", 3);
-        Worker worker3 = new Worker("Vlad3", "Chel3", 1.5f);
-        Worker worker5 = new Worker("Vlad5", "Chel3", 1.2f);
+        Worker worker1 = new Worker("Петров", "Chel1", 0.7f);
+        Worker worker2 = new Worker("Анастасия", "Chel2", 3);
+        Worker worker3 = new Worker("Егоров", "Chel4", 1.5f);
+        Worker worker5 = new Worker("Чел", "Chel5", 1.2f);
 
 
         mainDirector.addEmployee(worker1, worker2);
@@ -29,8 +29,9 @@ public class Main2 {
 
         EmployeeService.showInfoFromDirector(mainDirector);
 
-        System.out.println(EmployeeService.findWorkerByName(mainDirector, "Gustavo1"));
-        System.out.println(EmployeeService.findWorkerByName(director1, "Vlad3"));
+        System.out.println(EmployeeService.findWorkerByName(mainDirector, "Чел"));
+        System.out.println(EmployeeService.findWorkerByName(director1, "Ч"));
         System.out.println(EmployeeService.findWorkerByName(director1, "Vlad1"));
+
     }
 }
