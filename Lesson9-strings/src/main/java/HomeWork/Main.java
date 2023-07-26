@@ -1,3 +1,5 @@
+package HomeWork;
+
 import HomeWork.StringMethods;
 
 public class Main {
