@@ -2,12 +2,11 @@ package HomeWork;
 
 public abstract class StringMethods {
     public static void showTwoFirstNumberBlocks(String code){
-        System.out.println(String.join("", code.substring(0,4), code.substring(9, 13)));
+        System.out.println(code.substring(0,4) + code.substring(9, 13));
     }
     public static void replaceFourNumbers(String code){
-        StringBuilder stringBuilder = new StringBuilder(code);
-        stringBuilder.replace(5, 8 , "***").replace(14, 17, "***");
-        System.out.println(stringBuilder);
+        String result = code.replaceAll("[a-zA-Z]{3}", "***");
+        System.out.println(result);
     }
     public static String getLettersOnly(String code){
         return String.join("/", code.substring(5, 8), code.substring(14, 17), code.substring(19, 20), code.substring(22)).toLowerCase();
