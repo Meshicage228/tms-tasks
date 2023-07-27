@@ -5,8 +5,7 @@ public abstract class StringMethods {
         System.out.println(code.substring(0,4) + code.substring(9, 13));
     }
     public static void replaceFourNumbers(String code){
-        String result = code.replaceAll("[a-zA-Z]{3}", "***");
-        System.out.println(result);
+        System.out.println(code.replaceAll("[a-zA-Z]{3}", "***"));
     }
     public static String getLettersOnly(String code){
         return String.join("/", code.substring(5, 8), code.substring(14, 17), code.substring(19, 20), code.substring(22)).toLowerCase();
