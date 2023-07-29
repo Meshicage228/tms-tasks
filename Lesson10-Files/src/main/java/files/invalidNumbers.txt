@@ -1,4 +1,4 @@
 doc123456789436 - invalid start
 do13521366323do - invalid start
 do135contract53 - invalid start
-do135contr - invalid start
+do135contr - invalid length

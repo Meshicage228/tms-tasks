@@ -12,8 +12,7 @@ public abstract class FileService {
              String line = reader.readLine();
 
              while (line != null) {
-                System.out.println(line);
-                if (line.length() != 15 && line.isBlank()) {
+                if (line.length() != 15 || line.isBlank()) {
                     writerInvalid.write(line + " - invalid length\n");
                 } else if (!(line.startsWith("docnum") || line.startsWith("contract"))) {
                     writerInvalid.write(line + " - invalid start\n");
