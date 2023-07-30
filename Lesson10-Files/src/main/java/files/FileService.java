@@ -4,7 +4,7 @@ import java.io.*;
 
 public abstract class FileService {
     public static void fileDistributer(String fileName) {
-        String directoryPath = "D:\\JavaProjects\\tms-tasks\\Lesson10-Files\\src\\main\\java\\files\\";
+        String directoryPath = "Lesson10-Files/src/main/java/files/";
         try (LineNumberReader reader = new LineNumberReader(new FileReader(directoryPath + fileName + ".txt"));
              FileWriter writerValid = new FileWriter(directoryPath + "validNumbers.txt");
              FileWriter writerInvalid = new FileWriter(directoryPath + "invalidNumbers.txt")) {
