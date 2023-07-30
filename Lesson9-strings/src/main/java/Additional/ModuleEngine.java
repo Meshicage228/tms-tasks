@@ -13,7 +13,7 @@ public class ModuleEngine {
 
     public static void main(String[] args) throws IOException, InterruptedException{
         // Та же проблема не знаю как загрузить уже скомпилированный файл
-        String pathFile = "D:/JavaProjects/tms-tasks/Lesson9-strings/src/main/java/Additional/myfile.java";
+        String pathFile = "Lesson9-strings/src/main/java/Additional/myfile.java";
 
         Runtime runtime = Runtime.getRuntime();
         Process process = runtime.exec("notepad.exe " + pathFile);
@@ -23,7 +23,7 @@ public class ModuleEngine {
         compiler.run(null, null, null, pathFile);
 
         try {
-            URLClassLoader urlClassLoader = new URLClassLoader(new URL[]{new URL("file:/D:/JavaProjects/tms-tasks/Lesson9-strings/src/main/java/Additional/myfile")});
+            URLClassLoader urlClassLoader = new URLClassLoader(new URL[]{new URL("file:Lesson9-strings/src/main/java/Additional/myfile")});
             Class<?> myClass = urlClassLoader.loadClass("Additional.myfile"); // Тут грузит старое ( с прошлой компиляции)
 
             Method[] classMethods =  myClass.getDeclaredMethods();
