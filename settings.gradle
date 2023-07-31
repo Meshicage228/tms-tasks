@@ -6,4 +6,6 @@ include 'Lesson6-Interf-Abst'
 include 'Lesson5'
 include 'Lesson7'
 include 'Lesson10-Files'
-
+include 'Lesson9-String'
+include 'Lesson9-strings'
+include 'Lesson8'
