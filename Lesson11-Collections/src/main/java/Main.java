@@ -13,11 +13,13 @@ public class Main {
 
         System.out.println(stringMyList.size());
 
-        stringMyList.remove(2);
+        stringMyList.remove(0);
 
-        System.out.println(stringMyList.getElement(2));
+        System.out.println(stringMyList.getElement(0));
 
-        stringMyList.remove("top");
+        stringMyList.remove("pip");
+
+        System.out.println(stringMyList.getElement(0));
 
         System.out.println(stringMyList.size());
 
@@ -26,7 +28,7 @@ public class Main {
         System.out.println(stringMyList.size());
 
         // Доп
-        int[] arr = new int[]{1,1,5,6,3,6,6,6,3,6,89};
+        int[] arr = new int[]{1, 1, 5, 6, 3, 6, 6, 6, 3, 6, 89};
         Additional.byArray(arr);
         Additional.findDuplicates(arr);
     }

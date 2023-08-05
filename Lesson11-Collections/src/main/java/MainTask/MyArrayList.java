@@ -1,4 +1,5 @@
 package MainTask;
+
 import java.util.Arrays;
 
 public class MyArrayList<T> implements MyList<T> {
@@ -13,7 +14,7 @@ public class MyArrayList<T> implements MyList<T> {
     }
 
     public MyArrayList(int customCapacity) {
-        if(customCapacity < 0){
+        if (customCapacity < 0) {
             throw new IllegalArgumentException();
         }
         arr = new Object[customCapacity];
@@ -26,7 +27,7 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public T getElement(int index) {
-        if (index < 0 || index >= size()) {
+        if (index < 0 || index >= sizeCounter) {
             throw new IndexOutOfBoundsException();
         } else {
             return (T) arr[index];
@@ -35,7 +36,7 @@ public class MyArrayList<T> implements MyList<T> {
 
     @Override
     public void add(T element) {
-        if(sizeCounter == arr.length){
+        if (sizeCounter == arr.length) {
             enlargeCapacity();
         }
         arr[sizeCounter++] = element;
@@ -46,30 +47,25 @@ public class MyArrayList<T> implements MyList<T> {
         if (!contains(element)) {
             return;
         }
-        Object[] copyArray = new Object[arr.length];
         int i = 0;
-        int k = 0;
-        for (; i < arr.length; i++) {
+        for (; i < sizeCounter; i++) {
             if (arr[i].equals(element)) {
                 break;
             }
-            copyArray[k++] = arr[i];
         }
-        for (; i + 1 != arr.length; i++) {
+        for (; i < sizeCounter; i++) {
             arr[i] = arr[i + 1];
-            copyArray[k++] = arr[i];
         }
-        arr = copyArray;
         sizeCounter--;
     }
 
     @Override
     public void remove(int index) {
-        if (index >= size() || index < 0) {
+        if (index >= sizeCounter || index < 0) {
             throw new IndexOutOfBoundsException();
         }
         for (int i = index; i < sizeCounter; i++) {
-            arr[i] = arr[i+1];
+            arr[i] = arr[i + 1];
         }
         sizeCounter--;
     }
@@ -77,7 +73,7 @@ public class MyArrayList<T> implements MyList<T> {
     @Override
     public boolean contains(T element) {
         for (int i = 0; i < sizeCounter; i++) {
-            if(arr[i].equals(element)){
+            if (arr[i].equals(element)) {
                 return true;
             }
         }
@@ -93,5 +89,13 @@ public class MyArrayList<T> implements MyList<T> {
     @Override
     public void enlargeCapacity() {
         arr = Arrays.copyOf(arr, arr.length * 2);
+    }
+
+    @Override
+    public String toString() {
+        return "MyArrayList{" +
+                "arr=" + Arrays.toString(arr) +
+                ", sizeCounter=" + sizeCounter +
+                '}';
     }
 }
