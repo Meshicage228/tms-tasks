@@ -9,3 +9,5 @@ include 'Lesson10-Files'
 include 'Lesson9-String'
 include 'Lesson9-strings'
 include 'Lesson8'
+include 'Lesson11-Collections'
+
