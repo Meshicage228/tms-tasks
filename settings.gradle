@@ -10,4 +10,5 @@ include 'Lesson9-String'
 include 'Lesson9-strings'
 include 'Lesson8'
 include 'Lesson11-Collections'
+include 'Lesson12-Lambdas'
 
