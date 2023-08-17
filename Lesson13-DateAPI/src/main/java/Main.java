@@ -1,8 +1,10 @@
 import additional.TaskOneMethod;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.temporal.TemporalAdjusters;
 import java.util.*;
 
 public class Main {
@@ -22,15 +24,8 @@ public class Main {
 
         //2.
         LocalDate localDate = LocalDate.now();
-        switch (localDate.getDayOfWeek()) {
-            case MONDAY -> System.out.println(localDate.plusDays(8));
-            case TUESDAY -> System.out.println(localDate.plusDays(7));
-            case WEDNESDAY -> System.out.println(localDate.plusDays(6));
-            case THURSDAY -> System.out.println(localDate.plusDays(5));
-            case FRIDAY -> System.out.println(localDate.plusDays(4));
-            case SATURDAY -> System.out.println(localDate.plusDays(3));
-            case SUNDAY -> System.out.println(localDate.plusDays(2));
-        }
+        LocalDate nextThursday = localDate.with(TemporalAdjusters.next(DayOfWeek.TUESDAY));
+        System.out.println(nextThursday);
 
         // Additional
         new TaskOneMethod().doTask();
