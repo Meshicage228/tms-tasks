@@ -1,9 +1,9 @@
-package anotherSolution;
+package anotherSolutions;
 
 public class ThreadLogic {
 
+    // Второе
     // Если будет много потоков, то это плохой вариант. А так вроде работает
-    private boolean first = false;
     private boolean second = true;
     private boolean third = true;
 
@@ -15,14 +15,7 @@ public class ThreadLogic {
 
     public synchronized void secondDone() {
         second = false;
-        first = true;
         notify();
-    }
-
-    public synchronized void thirdWait() throws InterruptedException {
-        while (first) {
-            wait();
-        }
     }
 
     public synchronized void secondWait() throws InterruptedException {

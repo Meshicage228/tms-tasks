@@ -1,7 +1,10 @@
-package anotherSolution;
+package anotherSolutions;
 
-public class Main {
+public class SecondSolution {
     public static void main(String[] args) throws InterruptedException {
+
+        // Второе решение
+
         ThreadLogic threadLogic = new ThreadLogic();
         Thread first = new Thread(() -> {
             try {
@@ -25,15 +28,10 @@ public class Main {
             }
         });
         Thread third = new Thread(() -> {
-            try {
-                threadLogic.thirdWait();
-                for (int i = 0; i < 10; i++) {
-                    System.out.println("Third");
-                }
-                threadLogic.thirdDone();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+            for (int i = 0; i < 10; i++) {
+                System.out.println("Third");
             }
+            threadLogic.thirdDone();
         });
 
         third.start();
