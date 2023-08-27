@@ -1,5 +1,7 @@
-import service.impl.Person;
-import service.impl.Town;
+import service.PersonService;
+import service.TownService;
+import domain.Person;
+import domain.Town;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -13,18 +15,13 @@ public class Main {
                 new Person("Saha", "Pilkov", "Petersburg"),
                 new Person("Oksana", "Olegovna", "Brest"));
 
-        Person person = new Person();
-        person.save(lst);
+        PersonService.save(lst);
+        PersonService.delete(2);
+        PersonService.findAll().forEach(System.out::println);
 
-        Town town = new Town("Vitebsk");
+        TownService.save(new Town("Minsk"));
+        TownService.delete(2);
 
-        town.save();
-
-        town.delete("Minsk");
-
-        person.findAll().forEach(System.out::println);
-
-        person.deleteByNameSurname("Olya", "Tulka");
 
     }
 
