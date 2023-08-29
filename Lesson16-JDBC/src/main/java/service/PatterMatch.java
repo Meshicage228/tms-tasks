@@ -29,7 +29,7 @@ public abstract class PatterMatch<T, G> {
         connection.close();
     }
 
-    abstract void saveLogic(T obj, Statement statement) throws SQLException;
+    abstract protected void saveLogic(T obj, Statement statement) throws SQLException;
 
     public void delete(G id) throws SQLException {
         connection = DataBaseConfig.connection();
@@ -40,7 +40,7 @@ public abstract class PatterMatch<T, G> {
         connection.close();
     }
 
-    abstract void deleteLogic(G id, Statement statement) throws SQLException;
+    abstract protected void deleteLogic(G id, Statement statement) throws SQLException;
 
     public List<T> findAll() throws SQLException {
         connection = DataBaseConfig.connection();
@@ -54,5 +54,5 @@ public abstract class PatterMatch<T, G> {
 
     }
 
-    abstract List<T> findAllLogic(Statement statement) throws SQLException;
+    abstract protected List<T> findAllLogic(Statement statement) throws SQLException;
 }

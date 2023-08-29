@@ -11,7 +11,7 @@ import java.util.List;
 
 public class PersonService extends PatterMatch<Person, Integer> {
     @Override
-    void saveLogic(Person person, Statement statement) throws SQLException {
+    public void saveLogic(Person person, Statement statement) throws SQLException {
         ResultSet resultSet = statement.executeQuery("SELECT max(students.stud_id) + 1 FROM students");
         resultSet.next();
         int id = resultSet.getInt(1);
@@ -28,13 +28,14 @@ public class PersonService extends PatterMatch<Person, Integer> {
         preparedStatement.execute();
     }
 
+
     @Override
-    void deleteLogic(Integer id, Statement statement) throws SQLException {
+    public void deleteLogic(Integer id, Statement statement) throws SQLException {
         statement.executeUpdate("DELETE FROM students WHERE stud_id = " + id);
     }
 
     @Override
-    List<Person> findAllLogic(Statement statement) throws SQLException {
+    public List<Person> findAllLogic(Statement statement) throws SQLException {
         List<Person> lst = new ArrayList<>();
         ResultSet resultSet = statement.executeQuery(
                 "SELECT stud.name, stud.surname, t.name " +

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TownService extends PatterMatch<Town, Integer> {
     @Override
-    void saveLogic(Town toSave, Statement statement) {
+    public void saveLogic(Town toSave, Statement statement) {
         if (townExistsByName(toSave.getName())) {
             return;
         }
@@ -30,14 +30,14 @@ public class TownService extends PatterMatch<Town, Integer> {
     }
 
     @Override
-    void deleteLogic(Integer id, Statement statement) throws SQLException {
+    public void deleteLogic(Integer id, Statement statement) throws SQLException {
         statement.executeUpdate("UPDATE students SET town = NULL WHERE town = " + id);
 
         statement.executeUpdate("DELETE FROM towns WHERE towns_id = " + id);
     }
 
     @Override
-    List<Town> findAllLogic(Statement statement) throws SQLException {
+    public List<Town> findAllLogic(Statement statement) throws SQLException {
         List<Town> lst = new ArrayList<>();
         ResultSet resultSet = statement.executeQuery("SELECT towns.name FROM towns");
         while (resultSet.next()) {
