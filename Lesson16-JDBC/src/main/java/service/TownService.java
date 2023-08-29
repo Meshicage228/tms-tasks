@@ -3,27 +3,25 @@ package service;
 import config.DataBaseConfig;
 import domain.Town;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class TownService {
-    public static void save(Town town) {
-        if(townExistsByName(town.getName())) {
-            System.out.println("Town exists!");
+public class TownService extends PatterMatch<Town, Integer> {
+    @Override
+    void saveLogic(Town toSave, Statement statement) {
+        if (townExistsByName(toSave.getName())) {
             return;
         }
-        try (Connection connection = DataBaseConfig.connection();
-             ResultSet resultSet = connection.createStatement().executeQuery("select max(towns.towns_id) + 1 from towns")) {
+        try (ResultSet resultSet = statement.executeQuery("SELECT max(towns.towns_id) + 1 FROM towns")) {
             resultSet.next();
 
             int idNext = resultSet.getInt(1);
 
-            var preparedStatement = DataBaseConfig.connection().prepareStatement("insert into towns (towns_id, name) values (?,?)");
+            var preparedStatement = connection.prepareStatement("INSERT INTO towns (towns_id, name) VALUES (?,?)");
 
             preparedStatement.setInt(1, idNext);
-            preparedStatement.setString(2, town.getName());
+            preparedStatement.setString(2, toSave.getName());
 
             preparedStatement.execute();
         } catch (SQLException e) {
@@ -31,27 +29,37 @@ public class TownService {
         }
     }
 
-    public static void delete(Integer idTown) {
-        try (Connection connection = DataBaseConfig.connection();
-             Statement statement = connection.createStatement()) {
-            statement.executeUpdate("update students set town = null where town = " + idTown);
+    @Override
+    void deleteLogic(Integer id, Statement statement) throws SQLException {
+        statement.executeUpdate("UPDATE students SET town = NULL WHERE town = " + id);
 
-            statement.executeUpdate("delete from towns where towns_id = " + idTown);
-        } catch (SQLException e) {
-            System.out.println("Cannot delete this town");
-        }
+        statement.executeUpdate("DELETE FROM towns WHERE towns_id = " + id);
     }
+
+    @Override
+    List<Town> findAllLogic(Statement statement) throws SQLException {
+        List<Town> lst = new ArrayList<>();
+        ResultSet resultSet = statement.executeQuery("SELECT towns.name FROM towns");
+        while (resultSet.next()) {
+            Town town = new Town();
+            town.setName(resultSet.getString(1));
+            lst.add(town);
+        }
+        return lst;
+    }
+
     public static boolean townExistsByName(String name) {
         try (Connection connection = DataBaseConfig.connection();
-             ResultSet resultSet = connection.createStatement().executeQuery("select name from towns where name = '" + name + "'")) {
+             ResultSet resultSet = connection.createStatement().executeQuery("SELECT name FROM towns WHERE name = '" + name + "'")) {
             return resultSet.next();
         } catch (SQLException e) {
             return false;
         }
     }
+
     public static int getIdByName(String name) {
         try (Connection connection = DataBaseConfig.connection();
-             ResultSet resultSet = connection.createStatement().executeQuery("select towns_id from towns where name = '" + name + "'")) {
+             ResultSet resultSet = connection.createStatement().executeQuery("SELECT towns_id FROM towns WHERE name = '" + name + "'")) {
             resultSet.next();
             return resultSet.getInt(1);
         } catch (SQLException e) {
