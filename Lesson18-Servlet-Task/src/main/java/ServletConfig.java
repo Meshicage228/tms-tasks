@@ -11,4 +11,9 @@ public class ServletConfig extends HttpServlet {
         PrintWriter printWriter = resp.getWriter();
         printWriter.println("hello from tms");
     }
+
+    @Override
+    public void init(javax.servlet.ServletConfig config) throws ServletException {
+        super.init(config);
+    }
 }
