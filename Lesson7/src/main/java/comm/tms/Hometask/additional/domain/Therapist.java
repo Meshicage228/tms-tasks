@@ -1,4 +1,4 @@
-package comm.tms.Hometask.additional.object;
+package comm.tms.Hometask.additional.domain;
 
 import comm.tms.Hometask.additional.service.Doctor;
 
