@@ -1,4 +1,4 @@
-package comm.tms.Hometask.additional.object;
+package comm.tms.Hometask.additional.domain;
 
 import comm.tms.Hometask.additional.service.Doctor;
 
@@ -20,7 +20,7 @@ public abstract class PatientService {
     }
 
     public static void showHealMethod(Patient patient) {
-        if (patient.getDoctors()[0] == 0) {
+        if (patient.getDoctors()[0] == null) {
             System.out.println("No doctors added !");
             return;
         }

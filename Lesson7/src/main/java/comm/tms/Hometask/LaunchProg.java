@@ -1,6 +1,6 @@
 package comm.tms.Hometask;
 
-import comm.tms.Hometask.additional.object.*;
+import comm.tms.Hometask.additional.domain.*;
 import comm.tms.Hometask.mainTask.service.*;
 import comm.tms.Hometask.additional.service.*;
 import comm.tms.Hometask.mainTask.object.*;
@@ -27,16 +27,16 @@ public class LaunchProg {
         //2.
 
         Patient patient = new Patient(MethodOfTherapy.CODE1);
-        PatientService.AppointDoctor(patient);
+        PatientService.appointDoctor(patient);
 
         patient.setMethodOfTherapy(MethodOfTherapy.CODE2);
-        PatientService.AppointDoctor(patient);
+        PatientService.appointDoctor(patient);
 
         patient.setMethodOfTherapy(MethodOfTherapy.CODE3);
-        PatientService.AppointDoctor(patient);
+        PatientService.appointDoctor(patient);
 
         patient.setMethodOfTherapy(MethodOfTherapy.CODE1);
-        PatientService.AppointDoctor(patient);
+        PatientService.appointDoctor(patient);
 
         PatientService.showHealMethod(patient);
 
