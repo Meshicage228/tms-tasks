@@ -8,6 +8,8 @@ build/
 /.idea/gradle.xml
 /.idea/misc.xml
 /.idea/vcs.xml
+.idea/dataSources.xml
+/.idea/workspace.xml
 /.idea/dataSources.xml
 /.idea/sqldialects.xml
 ### IntelliJ IDEA ###
