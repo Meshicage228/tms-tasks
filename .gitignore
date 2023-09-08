@@ -12,6 +12,7 @@ build/
 /.idea/workspace.xml
 /.idea/dataSources.xml
 /.idea/sqldialects.xml
+/.idea/encodings.xml
 ### IntelliJ IDEA ###
 .idea/dataSources.xml
 .idea/modules.xml

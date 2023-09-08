@@ -13,31 +13,22 @@ import java.util.stream.Collectors;
 @WebServlet("/a1")
 public class ServletTest extends HttpServlet {
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.service(req, resp);
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter printWriter = resp.getWriter();
-
-        printWriter.println("A1");
-    }
-
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String username = req.getParameter("username");
-        String option = req.getParameter("option");
-        String info = req.getParameter("Text");
-        String secret = req.getParameter("secretMessage");
+        if(req.getParameter("action").equals("Sent")) {
+            String username = req.getParameter("username");
+            String option = req.getParameter("option");
+            String info = req.getParameter("Text");
+            String secret = req.getParameter("secretMessage");
 
-        System.out.println("Привет!");
-
-        StringJoiner stringJoiner = new StringJoiner(" ");
-        stringJoiner.add(username);
-        stringJoiner.add(option);
-        stringJoiner.add(info);
-        stringJoiner.add(secret);
-        resp.getWriter().println(stringJoiner);
+            StringJoiner stringJoiner = new StringJoiner(" ");
+            stringJoiner.add(username);
+            stringJoiner.add(option);
+            stringJoiner.add(info);
+            stringJoiner.add(secret);
+            resp.getWriter().println("Info : " + stringJoiner);
+        }
+        else{
+            resp.sendRedirect("http://127.0.0.1:8080/testExample.html");
+        }
     }
 }
