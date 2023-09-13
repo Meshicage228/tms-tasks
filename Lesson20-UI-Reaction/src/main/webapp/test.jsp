@@ -5,16 +5,27 @@
 <html>
 <head>
     <title>Title</title>
+    <link href="style.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-Hello!
-    <form action="/add" method="post">
-        <label>Название</label>><input type="text" name="title"><br>
-        <label>Вес</label>><input type="number" name="weight"><br>
-        <label>Высота</label>><input type="number" name="height"><br>
-        <input type="submit" name="Add">
-    </form>
+<div class ="content">
+<form action="/add" method="post">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Название</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" name="title" aria-describedby="emailHelp" placeholder="Наименование продукта">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Вес</label>
+        <input type="number" class="form-control" name="weight" id="exampleInputPassword1" placeholder="Вес">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword12">Высота</label>
+        <input type="number" class="form-control" name="height" id="exampleInputPassword12" placeholder="Высота">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
 
 <table class="table">
     <thead class="thead-dark">
