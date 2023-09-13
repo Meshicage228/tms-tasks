@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Запись на курсы</h3>
+<hr>
+    <form method="post" action="/a1">
+        <label for = "name">Имя :</label> <br>
+        <input type = "text" placeholder = "Введите имя" id = "name" name= "username"><br><br>
+
+        Язык программирования <br>
+        <input type= "radio" name= "option" value = "C++"> C++ <br>
+        <input type= "radio" name= "option" value = "PHP"> PHP <br>
+        <input type= "radio" name= "option" value = "Python"> Python <br><br>
+
+        <label for = "bigText">Дополнительная информация :</label><br>
+        <textarea id = "bigText" name="Text"></textarea> <br> <br>
+
+        <label for = "secret">Секретное слово :</label> <br>
+        <input type= "password" placeholder= "Введите секретное слово" id = "secret" name = "secretMessage"><br><br>
+
+        <input type= "submit" value= "Sent" name = "action">
+        <input type="reset" value= "Restart">
+    </form>
+<hr>
+</body>
+</html>
