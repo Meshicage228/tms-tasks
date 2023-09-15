@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="../styles/style.css" rel="stylesheet">
+    <title>bsuir</title>
+    <link rel="icon" type="image/x-icon" href="../images/bsuirFavicon.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+<header class="header-main">
+    <nav class="navbar fixed-top navbar-expand-lg" style="background-color: #1a2f5e">
+        <div class="container-fluid">
+            <a class="navbar-brand" href=""><img src="../images/bsuirSymbol.svg"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="testSite.html" style="color: white; font-size: 20px">На главную</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="authorize.html" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false" style="color: white">
+                            Студентам
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Личный кабинет</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Оплата обучения</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Электронная библиотека</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Стажировки</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Практика</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false" style="color: white">
+                            Абитуриентам
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Подготовка к поступлению</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">ЦТ и ЦЭ</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Приемная коммисия</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false" style="color: white">
+                            Сотрудникам
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Расписания</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Научная деятельность</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Библиотека</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <button class="btn btn-primary btn-search-around" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Дополнительная Информация
+                </button>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Поиск по сайту" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+                <button class="btn btn-primary enter" type="button" ><a href="testSite.html" class="text-dec">Войти</a> </button>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class ="content-auth">
+    <div class ="authorize-box">
+        <div class="to-enter">
+            <form>
+                <h2>Личный кабинет</h2>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Логин">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Пароль">
+                </div>
+                <button type="submit" class="btn btn-primary wid">Войти</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+<footer class="footer">
+    <div class ="footer-content">
+        <div class ="logo-and-name">
+            <div class="lg">
+                <img src="../images/bsuirSymbol.svg">
+                <div class="title-foot desktop">
+                    <span class="fs16">Б</span>елорусский
+                    <span class="fs16">Г</span>осударственный
+                    <span class="fs17">У</span><span class="fs14">ниверситет</span>
+                    <span class="fs17">И</span><span class="fs14">нформатики</span>
+                    <span class="fs17 ls6">и </span>
+                    <span class="fs17 ls2">Радиоэлектроники</span>
+                </div>
+            </div>
+            <div class="social-images">
+                <a href="https://www.instagram.com/bsuir_official/">
+                    <img src="../images/inst.png" class ="img-social"></a>
+                <a href="https://vk.com/bsuir_official">
+                    <img src="../images/vk.png" class ="img-social"></a>
+                <a href="https://t.me/bsuir_official">
+                    <img src="../images/teleg.png" class ="img-social"></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel"
+     data-bs-scroll="true">
+    <div class="canvas-body">
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action "><p>О БГУИР-е</p></a>
+            <a href="#" class="list-group-item list-group-item-action "><p>Новости</p></a>
+            <a href="#" class="list-group-item list-group-item-action "><p>Научные достижения</p></a>
+            <a href="#" class="list-group-item list-group-item-action "><p>Расписания кафедр</p></a>
+            <a href="#" class="list-group-item list-group-item-action "><p>Учебные дисциплины</p></a>
+            <a href="#" class="list-group-item list-group-item-action "><p>Студенческая жизнь</p></a>
+            <a href="#" class="list-group-item list-group-item-action "><p>Общежитие</p></a>
+            <a href="#" class="list-group-item list-group-item-action "><p>Сотрудничество</p></a>
+            <a href="#" class="list-group-item list-group-item-action "><p>Контакты</p></a>
+        </div>
+    </div>
+</div>
+</html>
