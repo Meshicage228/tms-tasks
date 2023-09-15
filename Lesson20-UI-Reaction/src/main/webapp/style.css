@@ -1,17 +1,20 @@
-.form-group{
+.form-group {
     height: 86px;
     width: 100%;
 }
-.content{
+
+.content {
     width: 500px;
     background-color: #e9edf3;
     border-radius: 20px;
     margin: auto;
 }
-.btn{
+
+.btn {
     width: 100%;
 }
-label{
+
+label {
     padding-left: 10px;
-    color : black;
+    color: black;
 }

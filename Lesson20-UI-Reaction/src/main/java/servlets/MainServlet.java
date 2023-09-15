@@ -1,4 +1,7 @@
-import domain.Fridge;
+package servlets;
+
+import config.CustomDB;
+import domain.Product;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +22,7 @@ public class MainServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Fridge> fridges = customDB.getByTitle(null);
+        List<Product> fridges = customDB.getByTitle(null);
 
         req.setAttribute("fridges", fridges);
 

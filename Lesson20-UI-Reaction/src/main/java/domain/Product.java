@@ -9,9 +9,9 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Fridge {
+public class Product {
     private String title;
     private float height;
     private float weight;
-    UUID id;
+    private UUID id;
 }
