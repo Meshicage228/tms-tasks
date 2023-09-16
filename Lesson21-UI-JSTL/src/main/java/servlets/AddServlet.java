@@ -13,19 +13,20 @@ import java.io.IOException;
 @WebServlet("/add")
 public class AddServlet extends HttpServlet {
     private final CustomDB customDB = new CustomDB();
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            String title = req.getParameter("title");
-            float height = Float.parseFloat(req.getParameter("height"));
-            float weight = Float.parseFloat(req.getParameter("weight"));
+        String title = req.getParameter("title");
+        float height = Float.parseFloat(req.getParameter("height"));
+        float weight = Float.parseFloat(req.getParameter("weight"));
 
-            Product fridge = new Product();
+        Product product = new Product();
 
-            fridge.setTitle(title);
-            fridge.setHeight(height);
-            fridge.setWeight(weight);
+        product.setTitle(title);
+        product.setHeight(height);
+        product.setWeight(weight);
 
-            customDB.create(fridge);
+        customDB.create(product);
 
         req.getRequestDispatcher("/home").forward(req, resp);
     }
