@@ -20,4 +20,5 @@ include 'Lesson19-HTML-form'
 include 'SiteLending'
 include 'Lesson20-UI-Reaction'
 include 'Lesson21-UI-JSTL'
+include 'SiteLending'
 
