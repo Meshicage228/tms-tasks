@@ -22,9 +22,9 @@ public class MainServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Product> fridges = customDB.getByTitle(null);
+        List<Product> products = customDB.getByTitle(null);
 
-        req.setAttribute("fridges", fridges);
+        req.setAttribute("product", products);
 
 
         req.getRequestDispatcher("/test.jsp").forward(req,resp);

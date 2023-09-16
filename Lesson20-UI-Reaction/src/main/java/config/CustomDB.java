@@ -8,27 +8,27 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class CustomDB {
-    public static List<Product> fridgeList = new ArrayList<>();
+    public static List<Product> productList = new ArrayList<>();
 
     public void create(Product fridge){
         fridge.setId(UUID.randomUUID());
-        fridgeList.add(fridge);
+        productList.add(fridge);
     }
     public List<Product> getByTitle(String title){
         if(title == null || title.isBlank()){
-            return fridgeList;
+            return productList;
         }
-        return fridgeList.stream()
+        return productList.stream()
                 .filter(fridge -> title.equals(fridge.getTitle()))
                 .toList();
     }
     public void delete(UUID uuid){
-        Optional<Product> first = fridgeList.stream()
+        Optional<Product> first = productList.stream()
                 .filter(fridge -> fridge.getId().equals(uuid))
                 .findFirst();
 
 
-        first.ifPresent(fridge -> fridgeList.remove(fridge));
+        first.ifPresent(fridge -> productList.remove(fridge));
     }
 
 }

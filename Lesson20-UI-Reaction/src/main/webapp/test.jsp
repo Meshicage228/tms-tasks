@@ -39,18 +39,18 @@
     </tr>
     </thead>
     <%
-        Object fridges = request.getAttribute("fridges");
+        Object product = request.getAttribute("product");
 
-        if (fridges != null) {
-            List<Product> fridgeList = (List<Product>) request.getAttribute("fridges");
-            for (Product fridge : fridgeList) {
+        if (product != null) {
+            List<Product> productList = (List<Product>) request.getAttribute("product");
+            for (Product products : productList) {
                 out.println("<tbody>");
                 out.println("<tr>");
                 out.println("<form action ='/delete' method = 'post'>");
-                out.println("<th scope='row'>" + fridge.getTitle() + "</th>");
-                out.println("<td>" + fridge.getWeight() + "</td>");
-                out.println("<td>" + fridge.getHeight() + "</td>");
-                out.println("<input type ='hidden' name = 'deleteId' value = '" + fridge.getId() + "'>");
+                out.println("<th scope='row'>" + products.getTitle() + "</th>");
+                out.println("<td>" + products.getWeight() + "</td>");
+                out.println("<td>" + products.getHeight() + "</td>");
+                out.println("<input type ='hidden' name = 'deleteId' value = '" + products.getId() + "'>");
                 out.println("<td><input type ='submit' value = 'delete'></td>");
                 out.println("</li>");
                 out.println("</form>");
