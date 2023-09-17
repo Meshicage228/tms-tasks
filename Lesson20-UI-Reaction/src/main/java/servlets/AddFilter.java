@@ -6,9 +6,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-
 @WebFilter("/add")
-public class addFilter implements Filter {
+public class AddFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -24,10 +23,8 @@ public class addFilter implements Filter {
 
         if(spaces.isEmpty()){
             chain.doFilter(request,response);
-            request.setAttribute("toshow", false);
         }
         else{
-            request.setAttribute("toshow", true);
             request.getRequestDispatcher("/home").forward(request, response);
         }
     }
