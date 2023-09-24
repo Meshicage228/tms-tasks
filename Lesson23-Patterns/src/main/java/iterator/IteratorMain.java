@@ -1,14 +1,35 @@
 package iterator;
 
-import iterator.domain.IteratorContent;
-import iterator.service.CheckIteratorService;
+import iterator.domain.SomeObject;
+import iterator.service.impl.NumbersIteratorImpl;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Stream;
 
 public class IteratorMain {
     public static void main(String[] args) throws InterruptedException {
-            IteratorContent checkIterator = new IteratorContent(List.of(12,5,65,263,-152,-6132));
-            CheckIteratorService.showAllInfo(checkIterator);
+        // Кастомный итератор
+        SomeObject numbers = new SomeObject();
+
+        numbers.add(23);
+        numbers.add(53);
+        numbers.add(-13);
+
+        NumbersIteratorImpl iterator = numbers.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
+
+        // Дефолтный
+        List<Integer> list = Stream.generate(() -> new Random().nextInt(1000))
+                .limit(10)
+                .toList();
+
+        Iterator<Integer> iterator1 = list.iterator();
+
+        iterator1.forEachRemaining(System.out::println);
 
     }
 }
