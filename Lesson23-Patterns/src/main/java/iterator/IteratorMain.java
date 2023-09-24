@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public class IteratorMain {
     public static void main(String[] args) throws InterruptedException {
         // Кастомный итератор
-        SomeObject numbers = new SomeObject();
+        SomeObject<Integer> numbers = new SomeObject<>();
 
         numbers.add(23);
         numbers.add(53);
