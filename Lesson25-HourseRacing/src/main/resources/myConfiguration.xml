@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="domain.RacingGame" name="racingGame" autowire="constructor"
+          depends-on="coupleService, walletService" scope="prototype">
+        <constructor-arg index="0" ref="walletService"/>
+        <constructor-arg index="1" ref="coupleService"/>
+    </bean>
+
+
+    <bean class="services.impl.WalletServiceImpl" name="walletService">
+        <constructor-arg index="0" ref="wallet"/>
+    </bean>
+    <bean class="services.impl.CoupleServiceImpl" name="coupleService">
+        <constructor-arg>
+            <list>
+                <ref bean="couple" />
+                <ref bean="couple2" />
+                <ref bean="couple3" />
+            </list>
+        </constructor-arg>
+    </bean>
+    <bean class="domain.Wallet" name="wallet"/>
+
+    <bean class="domain.Couple" name="couple">
+        <constructor-arg index="0" ref="horse"/>
+        <constructor-arg index="1" ref="rider"/>
+    </bean>
+    <bean class="domain.Horse" name="horse">
+        <constructor-arg type="java.lang.String" value="Tally"/>
+    </bean>
+    <bean class="domain.Rider" name="rider">
+        <constructor-arg value="John"/>
+    </bean>
+
+    <bean class="domain.Couple" name="couple2">
+        <constructor-arg index="0" ref="horse2"/>
+        <constructor-arg index="1" ref="rider2"/>
+    </bean>
+    <bean class="domain.Horse" name="horse2">
+        <constructor-arg type="java.lang.String" value="Ymka"/>
+    </bean>
+    <bean class="domain.Rider" name="rider2">
+        <constructor-arg value="George"/>
+    </bean>
+
+    <bean class="domain.Couple" name="couple3">
+        <constructor-arg index="0" ref="horse3"/>
+        <constructor-arg index="1" ref="rider3"/>
+    </bean>
+    <bean class="domain.Horse" name="horse3">
+        <constructor-arg type="java.lang.String" value="Lopka"/>
+    </bean>
+    <bean class="domain.Rider" name="rider3">
+        <constructor-arg value="Anjella"/>
+    </bean>
+</beans>
