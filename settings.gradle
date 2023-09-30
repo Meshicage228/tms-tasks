@@ -22,4 +22,5 @@ include 'Lesson20-UI-Reaction'
 include 'Lesson21-UI-JSTL'
 include 'SiteLending'
 include 'Lesson23-Patterns'
+include 'Lesson24-MorePatterns'
 
