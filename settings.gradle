@@ -23,4 +23,5 @@ include 'Lesson21-UI-JSTL'
 include 'SiteLending'
 include 'Lesson23-Patterns'
 include 'Lesson24-MorePatterns'
+include 'Lesson25-HourseRacing'
 
