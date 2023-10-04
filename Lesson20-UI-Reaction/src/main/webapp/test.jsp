@@ -2,6 +2,8 @@
 <%@ page import="domain.Product" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="f" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -38,28 +40,21 @@
         <th scope="col">Удаление</th>
     </tr>
     </thead>
-    <%
-        Object product = request.getAttribute("product");
-
-        if (product != null) {
-            List<Product> productList = (List<Product>) request.getAttribute("product");
-            for (Product products : productList) {
-                out.println("<tbody>");
-                out.println("<tr>");
-                out.println("<form action ='/delete' method = 'post'>");
-                out.println("<th scope='row'>" + products.getTitle() + "</th>");
-                out.println("<td>" + products.getWeight() + "</td>");
-                out.println("<td>" + products.getHeight() + "</td>");
-                out.println("<input type ='hidden' name = 'deleteId' value = '" + products.getId() + "'>");
-                out.println("<td><input type ='submit' value = 'delete'></td>");
-                out.println("</li>");
-                out.println("</form>");
-                out.println("</tr>");
-                out.println("</tbody>");
-            }
-        }
-    %>
+    <c:forEach items="${requestScope.product}" var="product">
+        <tbody>
+        <tr>
+            <form action ="/delete" method = "post">
+            <th scope="row">${product.title}</th>
+            <td>${product.weight}</td>
+            <td>${product.height}</td>
+            <input type ="hidden" name = "deleteId" value = "${product.id}">
+            <td><input type ="submit" value = "delete"></td>
+            </form>
+        </tr>
+        </tbody>
+    </c:forEach>
 </table>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
