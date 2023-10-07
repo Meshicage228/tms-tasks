@@ -2,18 +2,26 @@ package horseRacing.com.domain;
 
 import horseRacing.com.services.impl.CoupleServiceImpl;
 import horseRacing.com.services.impl.WalletServiceImpl;
+import horseRacing.com.utils.TimeCalc;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
+@Service
 public class RacingGame {
-    private final WalletServiceImpl walletService;
 
+
+    private final WalletServiceImpl walletService;
     private final CoupleServiceImpl couples;
 
     public RacingGame(WalletServiceImpl walletService, CoupleServiceImpl couples) {
         this.walletService = walletService;
         this.couples = couples;
     }
+
+    @TimeCalc
     public void startGame() {
         do {
             Couple maybeWin = couples.chooseCouple();

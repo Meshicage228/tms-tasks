@@ -3,14 +3,14 @@ package horseRacing.com.config;
 import horseRacing.com.domain.*;
 import horseRacing.com.services.impl.CoupleServiceImpl;
 import horseRacing.com.services.impl.WalletServiceImpl;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
+
+import java.time.temporal.Temporal;
 
 
 @Configuration
 @ComponentScan(basePackages = {"horseRacing.com.services"})
+@EnableAspectJAutoProxy
 public class AppConfig {
     @Bean
     @Scope("prototype")
