@@ -4,6 +4,7 @@ package horseRacing.com.services.impl;
 import horseRacing.com.domain.Couple;
 import horseRacing.com.services.CoupleService;
 import horseRacing.com.utils.CreateScanner;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +14,10 @@ import java.util.Collections;
 import java.util.List;
 
 @Getter
+@AllArgsConstructor
 @Service
 public class CoupleServiceImpl implements CoupleService {
     private final List<Couple> couples;
-
-    public CoupleServiceImpl(List<Couple> couples) {
-        this.couples = couples;
-    }
 
     @Override
     public Couple chooseCouple() {

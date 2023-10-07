@@ -1,6 +1,5 @@
 package horseRacing.com.domain;
 
-
 import horseRacing.com.services.impl.CoupleServiceImpl;
 import horseRacing.com.services.impl.WalletServiceImpl;
 
@@ -10,7 +9,6 @@ public class RacingGame {
     private final WalletServiceImpl walletService;
 
     private final CoupleServiceImpl couples;
-
 
     public RacingGame(WalletServiceImpl walletService, CoupleServiceImpl couples) {
         this.walletService = walletService;

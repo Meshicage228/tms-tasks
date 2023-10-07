@@ -4,18 +4,18 @@ import horseRacing.com.domain.Wallet;
 import horseRacing.com.services.WalletService;
 import horseRacing.com.utils.CreateScanner;
 import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
 @Getter
+@RequiredArgsConstructor
 @Service
 public class WalletServiceImpl implements WalletService {
+    @NonNull
     private final Wallet wallet;
     private float bid;
-
-    public WalletServiceImpl(Wallet wallet) {
-        this.wallet = wallet;
-    }
 
     @Override
     public void makeBid() {

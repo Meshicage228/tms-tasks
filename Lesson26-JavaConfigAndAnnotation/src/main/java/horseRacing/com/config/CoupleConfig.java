@@ -5,10 +5,12 @@ import horseRacing.com.domain.Horse;
 import horseRacing.com.domain.Rider;
 import horseRacing.com.domain.Wallet;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 @Configuration
+@ComponentScan(basePackages = "horseRacing.com.domain")
 public class CoupleConfig {
     @Bean
     Couple firstCouple() {
@@ -17,12 +19,12 @@ public class CoupleConfig {
 
     @Bean
     Couple secondCouple() {
-        return new Couple(horse1(), rider1());
+        return new Couple(horse2(), rider2());
     }
 
     @Bean
     Couple thirdCouple() {
-        return new Couple(horse1(), rider1());
+        return new Couple(horse3(), rider3());
     }
     @Bean
     Horse horse1() {

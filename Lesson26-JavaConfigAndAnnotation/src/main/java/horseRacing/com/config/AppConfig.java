@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Scope;
 
 
 @Configuration
-@ComponentScan(basePackages = {"horseRacing.com"})
+@ComponentScan(basePackages = {"horseRacing.com.services"})
 public class AppConfig {
     @Bean
     @Scope("prototype")
