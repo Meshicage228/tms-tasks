@@ -18,7 +18,6 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @Component
-@Scope("prototype")
 public class CoupleServiceImpl implements CoupleService {
     private final List<Couple> couples;
 
