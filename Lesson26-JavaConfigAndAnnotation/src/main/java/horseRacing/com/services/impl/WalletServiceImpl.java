@@ -13,8 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Getter
 @RequiredArgsConstructor
-@Component
-@Scope("prototype")
+@Service
 public class WalletServiceImpl implements WalletService {
     @NonNull
     private final Wallet wallet;

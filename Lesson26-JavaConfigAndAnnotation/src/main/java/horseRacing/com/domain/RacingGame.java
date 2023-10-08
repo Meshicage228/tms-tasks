@@ -14,7 +14,7 @@ import java.util.Random;
 
 @Component
 @RequiredArgsConstructor
-@Scope("prototype")
+@Service
 public class RacingGame {
     private final WalletServiceImpl walletService;
     private final CoupleServiceImpl couples;
@@ -50,7 +50,7 @@ public class RacingGame {
                         .forEach(horse -> {
                             horse.setKoefOfSpeed(horse.getKoefOfSpeed() + new Random().nextFloat(2));
                         });
-                Thread.sleep(2000);
+                Thread.sleep(100);
                 System.out.println(i + " round finished");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

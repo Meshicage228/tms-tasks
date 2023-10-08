@@ -17,7 +17,7 @@ import java.util.List;
 
 @Getter
 @AllArgsConstructor
-@Component
+@Service
 public class CoupleServiceImpl implements CoupleService {
     private final List<Couple> couples;
 
