@@ -3,23 +3,21 @@ package horseRacing.com.domain;
 import horseRacing.com.services.impl.CoupleServiceImpl;
 import horseRacing.com.services.impl.WalletServiceImpl;
 import horseRacing.com.utils.TimeCalc;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
-@Service
+@Component
+@RequiredArgsConstructor
+@Scope("prototype")
 public class RacingGame {
-
-
     private final WalletServiceImpl walletService;
     private final CoupleServiceImpl couples;
-
-    public RacingGame(WalletServiceImpl walletService, CoupleServiceImpl couples) {
-        this.walletService = walletService;
-        this.couples = couples;
-    }
 
     @TimeCalc
     public void startGame() {

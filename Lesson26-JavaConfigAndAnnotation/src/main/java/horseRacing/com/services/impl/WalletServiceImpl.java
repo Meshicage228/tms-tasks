@@ -6,12 +6,15 @@ import horseRacing.com.utils.CreateScanner;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
 @Getter
 @RequiredArgsConstructor
-@Service
+@Component
+@Scope("prototype")
 public class WalletServiceImpl implements WalletService {
     @NonNull
     private final Wallet wallet;

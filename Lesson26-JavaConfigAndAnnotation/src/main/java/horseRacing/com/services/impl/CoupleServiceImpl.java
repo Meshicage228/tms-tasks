@@ -6,6 +6,8 @@ import horseRacing.com.services.CoupleService;
 import horseRacing.com.utils.CreateScanner;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
@@ -15,7 +17,8 @@ import java.util.List;
 
 @Getter
 @AllArgsConstructor
-@Service
+@Component
+@Scope("prototype")
 public class CoupleServiceImpl implements CoupleService {
     private final List<Couple> couples;
 
