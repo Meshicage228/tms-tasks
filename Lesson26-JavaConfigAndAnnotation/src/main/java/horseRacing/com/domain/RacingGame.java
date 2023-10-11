@@ -3,21 +3,19 @@ package horseRacing.com.domain;
 import horseRacing.com.services.impl.CoupleServiceImpl;
 import horseRacing.com.services.impl.WalletServiceImpl;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
-@Component
+@RequiredArgsConstructor
+@Service
 @Scope("prototype")
 public class RacingGame {
     private final WalletServiceImpl walletService;
 
     private final CoupleServiceImpl couples;
 
-    public RacingGame(WalletServiceImpl walletService, CoupleServiceImpl couples) {
-        this.walletService = walletService;
-        this.couples = couples;
-    }
     public void startGame() {
         do {
             Couple maybeWin = couples.chooseCouple();
