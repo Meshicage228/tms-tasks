@@ -2,24 +2,20 @@ package horseRacing.com.domain;
 
 import horseRacing.com.services.impl.CoupleServiceImpl;
 import horseRacing.com.services.impl.WalletServiceImpl;
-import horseRacing.com.utils.TimeCalc;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
-@Component
 @RequiredArgsConstructor
 @Service
+@Scope("prototype")
 public class RacingGame {
     private final WalletServiceImpl walletService;
+
     private final CoupleServiceImpl couples;
 
-    @TimeCalc
     public void startGame() {
         do {
             Couple maybeWin = couples.chooseCouple();
@@ -50,7 +46,7 @@ public class RacingGame {
                         .forEach(horse -> {
                             horse.setKoefOfSpeed(horse.getKoefOfSpeed() + new Random().nextFloat(2));
                         });
-                Thread.sleep(100);
+                Thread.sleep(2000);
                 System.out.println(i + " round finished");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);

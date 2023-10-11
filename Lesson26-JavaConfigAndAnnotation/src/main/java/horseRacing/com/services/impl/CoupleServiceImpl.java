@@ -6,8 +6,6 @@ import horseRacing.com.services.CoupleService;
 import horseRacing.com.utils.CreateScanner;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
