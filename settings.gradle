@@ -25,4 +25,6 @@ include 'Lesson23-Patterns'
 include 'Lesson24-MorePatterns'
 include 'Lesson25-HourseRacing'
 include 'Lesson26-JavaConfigAndAnnotation'
+include 'Lesson29-SpringWeb'
+include 'Lesson29-SpringValidationShowUI'
 
