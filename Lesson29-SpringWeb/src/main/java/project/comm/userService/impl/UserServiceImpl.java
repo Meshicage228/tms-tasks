@@ -25,9 +25,4 @@ public class UserServiceImpl implements UserService {
     @Override
     public void showUser(User user){
     }
-
-    @ExceptionHandler(MissingUserInputException.class)
-    public String catchException(MissingUserInputException exception){
-        return "error";
-    }
 }
