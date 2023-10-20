@@ -9,11 +9,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import project.comm.domain.CustomDB;
-import project.comm.domain.JobTitle;
 import project.comm.userService.UserService;
 import project.comm.domain.User;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -22,9 +20,9 @@ import javax.validation.Valid;
 public class InfoController {
     private final UserService userService;
     @GetMapping
-    public ModelAndView showInfoPage(User user){
+    public ModelAndView showInfoPage(@ModelAttribute(name = "user") User user){
         ModelAndView modelAndView = new ModelAndView("info");
-        modelAndView.addObject("users" , CustomDB.userList);
+        modelAndView.addObject("users" , userService.showUsers());
         return modelAndView;
     }
 
@@ -34,8 +32,9 @@ public class InfoController {
 
         if(!bindingResult.hasFieldErrors()){
             userService.save(user);
+            modelAndView.addObject("user", new User());
         }
-        modelAndView.addObject("users", CustomDB.userList);
+        modelAndView.addObject("users", userService.showUsers());
         return modelAndView;
     }
 }
