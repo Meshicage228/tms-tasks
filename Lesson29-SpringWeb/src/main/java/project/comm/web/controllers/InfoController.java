@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,28 +22,20 @@ import javax.validation.Valid;
 public class InfoController {
     private final UserService userService;
     @GetMapping
-    public String showInfoPage(){
-        return "info";
+    public ModelAndView showInfoPage(User user){
+        ModelAndView modelAndView = new ModelAndView("info");
+        modelAndView.addObject("users" , CustomDB.userList);
+        return modelAndView;
     }
 
     @PostMapping
-    public ModelAndView addUser(@Valid User user, BindingResult bindingResult, HttpServletRequest request){
+    public ModelAndView addUser(@ModelAttribute(name = "user") @Valid User user, BindingResult bindingResult){
         ModelAndView modelAndView = new ModelAndView("info");
 
-        if(bindingResult.hasFieldErrors()){
-            bindingResult.getFieldErrors()
-                    .forEach(fieldError -> {
-                        String field = fieldError.getField();
-                        String defaultMessage = fieldError.getDefaultMessage();
-                        modelAndView.addObject(field + "Error", defaultMessage);
-                    });
-        }
-        else {
-            String title = request.getParameter("jobTitle");
-            user.setJobTitle(JobTitle.valueOf(title));
+        if(!bindingResult.hasFieldErrors()){
             userService.save(user);
-            modelAndView.addObject("users", CustomDB.userList);
         }
+        modelAndView.addObject("users", CustomDB.userList);
         return modelAndView;
     }
 }
