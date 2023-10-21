@@ -4,9 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
+import project.com.converters.SexConverter;
+import project.com.domain.JobTitle;
+import project.com.domain.Sex;
 
 import javax.persistence.*;
-import java.lang.annotation.Target;
+import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -15,13 +20,27 @@ import java.util.UUID;
 @Builder
 
 @Entity(name = "Person")
-@Table(name = "users")
+@Table(name = "persons")
 public class PersonEntity {
     @Id
+    @GeneratedValue(generator = "uuidGenerator" )
+    @GenericGenerator( name = "uuidGenerator",strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;
-    @Column(name = "name")
+
     private String name;
-    @Enumerated(EnumType.STRING)
-    @Column(name = "jobtitle")
-    private JobTitle title;
+
+    @Convert(converter = SexConverter.class)
+    private Sex sex;
+
+    @Column(length = 1024)
+    private String someInfo;
+
+    @Enumerated(value = EnumType.STRING)
+    private JobTitle jobTitle;
+
+    @Temporal(TemporalType.DATE)
+    private Date date;
+
+    @OneToMany(mappedBy = "personEntity")
+    private List<PhoneEntity> phones;
 }

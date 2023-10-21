@@ -5,6 +5,7 @@ build/
 !**/src/test/**/build/
 ### Personal Settings ###
 .gitignore
+/.idea/inspectionProfiles/Project_Default.xml
 /.idea/jsLibraryMappings.xml
 /.idea/gradle.xml
 /.idea/misc.xml

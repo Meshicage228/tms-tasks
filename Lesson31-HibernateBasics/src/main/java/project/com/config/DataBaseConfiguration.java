@@ -4,6 +4,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import project.com.entity.PersonEntity;
+import project.com.entity.PhoneEntity;
 
 public class DataBaseConfiguration {
 
@@ -17,7 +18,9 @@ public class DataBaseConfiguration {
         configuration.setProperty("hibernate.connection.password", "28072004");
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect");
         configuration.setProperty("hibernate.show_sql" ,"true");
+        configuration.setProperty("hibernate.hbm2ddl.auto" ,"update");
         configuration.addAnnotatedClass(PersonEntity.class);
+        configuration.addAnnotatedClass(PhoneEntity.class);
 
         sessionFactory = configuration.buildSessionFactory();
     }

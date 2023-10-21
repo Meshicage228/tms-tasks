@@ -1,4 +1,4 @@
-package project.com.entity;
+package project.com.domain;
 
 public enum JobTitle {
     WORKER,
