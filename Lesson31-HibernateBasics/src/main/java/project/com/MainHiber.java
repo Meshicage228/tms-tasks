@@ -1,22 +1,19 @@
 package project.com;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import project.com.config.DataBaseConfiguration;
 import project.com.domain.JobTitle;
-import project.com.entity.PersonEntity;
 import project.com.domain.Sex;
+import project.com.entity.PersonEntity;
 import project.com.entity.PhoneEntity;
-import project.com.service.PersonServiceImpl;
+import project.com.service.impl.PersonEntityServiceImpl;
+import project.com.service.impl.PhoneEntityServiceImpl;
 
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 public class MainHiber {
     public static void main(String[] args) {
-        /*Session session = DataBaseConfiguration.createSession();
-        Transaction transaction = session.beginTransaction();
+        PersonEntityServiceImpl personService = new PersonEntityServiceImpl();
+        PhoneEntityServiceImpl phoneService = new PhoneEntityServiceImpl();
 
         PersonEntity vlad = PersonEntity.builder()
                 .sex(Sex.MAN)
@@ -47,17 +44,15 @@ public class MainHiber {
                 .personEntity(sasha)
                 .build();
 
-        session.save(phone1);
-        session.save(phone2);
-        session.save(phone3);
-        session.save(vlad);
-        session.save(sasha);
+        personService.saveEntity(vlad);
+        UUID uuidSasha = personService.saveEntity(sasha);
 
-        transaction.commit();
-        session.close();*/
+        UUID uuidPhone = phoneService.saveEntity(phone1);
+        phoneService.saveEntity(phone2);
+        phoneService.saveEntity(phone3);
 
-        PersonServiceImpl personService = new PersonServiceImpl();
-        PersonEntity byId = personService.getById(UUID.fromString("d0cfae9e-1b68-4dd1-bfcb-62ca7d3323e0"));
-        System.out.println(byId);
+        PersonEntity fromDB1 = personService.getById(uuidSasha);
+        PhoneEntity byId = phoneService.getById(uuidPhone);
+
     }
 }
