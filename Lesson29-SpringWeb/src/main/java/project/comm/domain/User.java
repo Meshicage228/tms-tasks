@@ -23,4 +23,10 @@ public class User {
     private String name;
     @NotBlank(message = "Create your password!")
     private String password;
+
+    public User(String email, JobTitle jobTitle, String name) {
+        this.email = email;
+        this.jobTitle = jobTitle;
+        this.name = name;
+    }
 }
