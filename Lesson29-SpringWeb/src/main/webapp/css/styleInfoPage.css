@@ -1,0 +1,16 @@
+html{
+    height: 1000px;
+    width: 1200px;
+    background: red;
+}
+body{
+    width: 1000px;
+    height: 1200px;
+    background: red;
+}
+.scene{
+    width: 500px;
+    height: 230px;
+    margin: auto;
+    background : red;
+}
