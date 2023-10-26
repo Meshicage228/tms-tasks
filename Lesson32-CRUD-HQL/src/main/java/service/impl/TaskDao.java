@@ -2,6 +2,7 @@ package service.impl;
 
 import entity.TaskEntity;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import service.Dao;
 
 import java.util.List;
@@ -17,7 +18,11 @@ public class TaskDao implements Dao<TaskEntity> {
 
     @Override
     public List<TaskEntity> getAll() {
-        return null;
+        Session session = Dao.openSessionAndTransaction();
+        Query query = session.createQuery("FROM TaskEntity");
+        List list = query.list();
+        Dao.closeSessionAndTransaction(session);
+        return list;
     }
 
     @Override
@@ -37,7 +42,8 @@ public class TaskDao implements Dao<TaskEntity> {
     @Override
     public void delete(TaskEntity obj) {
         Session session = Dao.openSessionAndTransaction();
-
+        Query query = session.createQuery("DELETE FROM TaskEntity WHERE id =: taskId");
+        query.setParameter("taskId", obj.getId());
         session.delete(obj);
 
         Dao.closeSessionAndTransaction(session);

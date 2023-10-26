@@ -15,6 +15,14 @@ public class SexConverter implements AttributeConverter<Sex, String> {
 
     @Override
     public Sex convertToEntityAttribute(String dbData) {
-        return dbData == null ? null : Sex.valueOf(dbData);
+        switch (dbData){
+            case "M" -> {
+                return Sex.MAN;
+            }
+            case "W" -> {
+                return Sex.WOMAN;
+            }
+        }
+        return null;
     }
 }

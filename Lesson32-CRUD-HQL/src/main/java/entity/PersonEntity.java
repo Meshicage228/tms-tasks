@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.Session;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import service.Dao;
 
 import javax.persistence.*;
@@ -32,6 +34,8 @@ public class PersonEntity {
     @Convert(converter = SexConverter.class)
     private Sex sex;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+//    @LazyCollection(value = LazyCollectionOption.FALSE)
+
     private List<TaskEntity> entityList;
 }
