@@ -52,5 +52,7 @@ public class MainHiberCRUD {
         taskDao.save(refactoringTask);
         taskDao.save(bugFixing);
         taskDao.save(security);
+
+        personDao.delete(vladWorker);
     }
 }

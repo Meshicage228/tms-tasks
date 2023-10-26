@@ -2,6 +2,7 @@ package service.impl;
 
 import config.DataBaseConfiguration;
 import entity.PersonEntity;
+import entity.TaskEntity;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import service.Dao;
@@ -42,8 +43,18 @@ public class PersonDao implements Dao<PersonEntity> {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(PersonEntity entity) {
         Session session = Dao.openSessionAndTransaction();
+
+        //Передумать
+
+        Query query = session.createQuery("UPDATE TaskEntity SET person.id = NULL  WHERE person.id =: idPerson");
+        query.setParameter("idPerson", entity.getId());
+        query.executeUpdate();
+
+        Query query1 = session.createQuery("DELETE FROM PersonEntity WHERE id =: pId");
+        query1.setParameter("pId", entity.getId());
+        query1.executeUpdate();
 
         Dao.closeSessionAndTransaction(session);
     }

@@ -22,7 +22,11 @@ public class TaskDao implements Dao<TaskEntity> {
 
     @Override
     public Optional<TaskEntity> getById(Integer id) {
-        return Optional.empty();
+        Session session = Dao.openSessionAndTransaction();
+
+        Optional<TaskEntity> taskEntity = Optional.ofNullable(session.find(TaskEntity.class, id));
+        Dao.closeSessionAndTransaction(session);
+        return taskEntity;
     }
 
     @Override
@@ -31,7 +35,11 @@ public class TaskDao implements Dao<TaskEntity> {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(TaskEntity obj) {
+        Session session = Dao.openSessionAndTransaction();
 
+        session.delete(obj);
+
+        Dao.closeSessionAndTransaction(session);
     }
 }

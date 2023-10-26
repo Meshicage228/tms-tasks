@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.Session;
+import service.Dao;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -30,6 +32,6 @@ public class PersonEntity {
     @Convert(converter = SexConverter.class)
     private Sex sex;
 
-    @OneToMany(mappedBy = "person")
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TaskEntity> entityList;
 }

@@ -16,7 +16,7 @@ public interface Dao<T> {
 
     void update(T entity);
 
-    void delete(Integer id);
+    void delete(T obj);
 
     static Session openSessionAndTransaction(){
         Session session = DataBaseConfiguration.sessionFactory.openSession();
