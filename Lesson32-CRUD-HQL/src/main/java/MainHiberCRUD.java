@@ -2,11 +2,13 @@ import domain.Readiness;
 import domain.Sex;
 import entity.PersonEntity;
 import entity.TaskEntity;
+import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import service.impl.PersonDao;
 import service.impl.TaskDao;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 public class MainHiberCRUD {
     public static void main(String[] args) {
@@ -52,6 +54,12 @@ public class MainHiberCRUD {
         taskDao.save(refactoringTask);
         taskDao.save(bugFixing);
         taskDao.save(security);
+
+        List<PersonEntity> all = personDao.getAll();
+        System.out.println(all);
+
+        List<TaskEntity> all1 = taskDao.getAll();
+        System.out.println(all1);
 
         personDao.delete(vladWorker);
     }
