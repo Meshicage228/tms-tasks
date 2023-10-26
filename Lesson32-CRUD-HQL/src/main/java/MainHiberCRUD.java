@@ -62,5 +62,6 @@ public class MainHiberCRUD {
         System.out.println(all1);
 
         personDao.delete(vladWorker);
+        taskDao.delete(bugFixing);
     }
 }
