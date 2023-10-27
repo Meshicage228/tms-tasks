@@ -13,6 +13,7 @@ import service.Dao;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -27,6 +28,7 @@ import java.util.UUID;
 public class PersonEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "person_id")
     private Integer id;
     private String name;
 
@@ -34,8 +36,17 @@ public class PersonEntity {
     @Convert(converter = SexConverter.class)
     private Sex sex;
 
-    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-//    @LazyCollection(value = LazyCollectionOption.FALSE)
-
+    @OneToMany(mappedBy = "person",
+               cascade = CascadeType.ALL,
+               fetch = FetchType.EAGER)
     private List<TaskEntity> entityList;
+
+    public void addTask(TaskEntity taskEntity) {
+        if (entityList == null) {
+            entityList = new ArrayList<>();
+        }
+        entityList.add(taskEntity);
+        taskEntity.setPerson(this);
+
+    }
 }
