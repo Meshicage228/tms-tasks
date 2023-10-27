@@ -1,5 +1,6 @@
 package service.impl;
 
+import domain.Readiness;
 import entity.TaskEntity;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -26,10 +27,11 @@ public class TaskDao implements Dao<TaskEntity> {
     }
 
     @Override
-    public Optional<TaskEntity> getById(Integer id) {
+    public TaskEntity getById(Integer id) {
         Session session = Dao.openSessionAndTransaction();
 
-        Optional<TaskEntity> taskEntity = Optional.ofNullable(session.find(TaskEntity.class, id));
+        TaskEntity taskEntity = session.get(TaskEntity.class, id);
+
         Dao.closeSessionAndTransaction(session);
         return taskEntity;
     }
@@ -38,12 +40,18 @@ public class TaskDao implements Dao<TaskEntity> {
     public void update(TaskEntity entity) {
 
     }
+    public void update(TaskEntity entity, Readiness readiness){
+        Session session = Dao.openSessionAndTransaction();
+        Query query = session.createQuery("UPDATE TaskEntity as ts SET ts.readiness =: newReady WHERE ts.id =: curId");
+        query.setParameter("curId", entity.getId());
+        query.setParameter("newReady", readiness).executeUpdate();
+        Dao.closeSessionAndTransaction(session);
+    }
 
     @Override
     public void delete(TaskEntity obj) {
         Session session = Dao.openSessionAndTransaction();
-        Query query = session.createQuery("DELETE FROM TaskEntity WHERE id =: taskId");
-        query.setParameter("taskId", obj.getId());
+
         session.delete(obj);
 
         Dao.closeSessionAndTransaction(session);
