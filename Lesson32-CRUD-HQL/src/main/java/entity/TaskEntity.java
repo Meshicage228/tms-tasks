@@ -18,6 +18,7 @@ import java.util.UUID;
 public class TaskEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "task_id")
     private Integer id;
     private String nameOfTask;
     private String taskDescription;
@@ -26,5 +27,6 @@ public class TaskEntity {
 
     @ManyToOne
     @ToString.Exclude
+    @JoinColumn(name = "tasks_id")
     PersonEntity person;
 }
