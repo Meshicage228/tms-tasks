@@ -12,14 +12,14 @@ public interface Dao<T> {
 
     List<T> getAll();
 
-    Optional<T> getById(Integer id);
+    T getById(Integer id);
 
     void update(T entity);
 
     void delete(T obj);
 
     static Session openSessionAndTransaction(){
-        Session session = DataBaseConfiguration.sessionFactory.openSession();
+        Session session = DataBaseConfiguration.createSession();
         session.getTransaction().begin();
         return session;
     }

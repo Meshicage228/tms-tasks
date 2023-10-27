@@ -24,7 +24,7 @@ public class DataBaseConfiguration {
 
         sessionFactory = configuration.buildSessionFactory();
     }
-    public Session createSession(){
+    public static Session createSession(){
         return sessionFactory.openSession();
     }
 }

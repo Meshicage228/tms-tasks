@@ -2,12 +2,10 @@ import domain.Readiness;
 import domain.Sex;
 import entity.PersonEntity;
 import entity.TaskEntity;
-import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import service.impl.PersonDao;
 import service.impl.TaskDao;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 public class MainHiberCRUD {
@@ -31,37 +29,47 @@ public class MainHiberCRUD {
                 .nameOfTask("Refactoring")
                 .taskDescription("Long and hard job, should know patterns!")
                 .readiness(Readiness.NEW)
-                .person(vladWorker)
                 .build();
 
         TaskEntity bugFixing = TaskEntity.builder()
                 .nameOfTask("bugFixing")
                 .taskDescription("Not a bug but a feature!")
                 .readiness(Readiness.DONE)
-                .person(sashaWorker)
                 .build();
 
         TaskEntity security = TaskEntity.builder()
                 .nameOfTask("Develop Security")
                 .taskDescription("Even Dadya Vasia can break our programm - deal with it!")
-                .readiness(Readiness.IN_PROGRESS)
-                .person(sashaWorker)
+                .readiness(Readiness.DONE)
                 .build();
+
+        vladWorker.addTask(refactoringTask);
+        vladWorker.addTask(bugFixing);
+        sashaWorker.addTask(security);
 
         personDao.save(vladWorker);
         personDao.save(sashaWorker);
 
-        taskDao.save(refactoringTask);
-        taskDao.save(bugFixing);
-        taskDao.save(security);
+        System.out.println("Get Persons with readiness task value : ");
+        List<PersonEntity> byTaskReadiness = personDao.getByTaskReadiness(Readiness.DONE);
+        System.out.println(byTaskReadiness);
 
+        System.out.println("Show all");
         List<PersonEntity> all = personDao.getAll();
         System.out.println(all);
 
+        personDao.delete(sashaWorker);
+
+        System.out.println("After deleting worker :");
         List<TaskEntity> all1 = taskDao.getAll();
         System.out.println(all1);
 
+//        taskDao.delete(bugFixing); OPTIMISTIC LOCK RESOLVE TODO!!!
+        taskDao.update(refactoringTask, Readiness.IN_PROGRESS);
+
+        System.out.println("Delete and update task");
+        System.out.println(taskDao.getAll());
+
         personDao.delete(vladWorker);
-        taskDao.delete(bugFixing);
     }
 }
