@@ -64,7 +64,7 @@ public class MainHiberCRUD {
         List<TaskEntity> all1 = taskDao.getAll();
         System.out.println(all1);
 
-//        taskDao.delete(bugFixing); OPTIMISTIC LOCK RESOLVE TODO!!!
+        taskDao.delete(bugFixing);
         taskDao.update(refactoringTask, Readiness.IN_PROGRESS);
 
         System.out.println("Delete and update task");
