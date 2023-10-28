@@ -45,6 +45,7 @@ public class TaskDao implements Dao<TaskEntity> {
         Query query = session.createQuery("UPDATE TaskEntity as ts SET ts.readiness =: newReady WHERE ts.id =: curId");
         query.setParameter("curId", entity.getId());
         query.setParameter("newReady", readiness).executeUpdate();
+        entity.setReadiness(readiness);
         Dao.closeSessionAndTransaction(session);
     }
 
