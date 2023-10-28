@@ -54,6 +54,8 @@ public class TaskDao implements Dao<TaskEntity> {
 
         session.delete(obj);
 
+        obj.getPerson().getEntityList().remove(obj);
+
         Dao.closeSessionAndTransaction(session);
     }
 }
