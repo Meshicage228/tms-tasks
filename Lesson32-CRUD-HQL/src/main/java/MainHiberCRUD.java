@@ -1,16 +1,28 @@
 import domain.Readiness;
 import domain.Sex;
+import dto.PersonSearchDto;
+import dto.TaskSearchDto;
 import entity.PersonEntity;
 import entity.TaskEntity;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+import service.Dao;
 import service.impl.PersonDao;
 import service.impl.TaskDao;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class MainHiberCRUD {
     public static void main(String[] args) {
-        PersonDao personDao = new PersonDao();
+        /*PersonDao personDao = new PersonDao();
         TaskDao taskDao = new TaskDao();
 
         PersonEntity vladWorker = PersonEntity.builder()
@@ -70,6 +82,38 @@ public class MainHiberCRUD {
         System.out.println("Delete and update task");
         System.out.println(taskDao.getAll());
 
-        personDao.delete(vladWorker);
+        personDao.delete(vladWorker);*/
+
+        PersonSearchDto search = PersonSearchDto.builder()
+                .name("Vlad")
+                .sex(Sex.MAN)
+                .build();
+
+        TaskSearchDto searchDto = TaskSearchDto.builder()
+                .readiness(Readiness.DONE)
+                .build();
+
+        Session session = Dao.openSessionAndTransaction();
+        Criteria criteria = session.createCriteria(PersonEntity.class, "pe");
+
+        List list;
+
+        if(search == null){
+            list = criteria.list();
+        }else {
+            if(isNotBlank(search.getName())){
+                criteria.add(Restrictions.eq("name",search.getName()));
+            }
+            if(Objects.nonNull(search.getSex())){
+                criteria.add(Restrictions.eq("sex", search.getSex()));
+            }
+        }
+
+        Criteria criteriaPhone = criteria.createCriteria("pe.entityList", "pt");
+        criteria.add(Restrictions.eq("pt.readiness", searchDto.getReadiness()));
+
+        criteria.list().forEach(System.out::println);
+
+        Dao.closeSessionAndTransaction(session);
     }
 }

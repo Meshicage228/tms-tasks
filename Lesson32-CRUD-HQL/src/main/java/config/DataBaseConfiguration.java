@@ -17,7 +17,7 @@ public class DataBaseConfiguration {
         configuration.setProperty("hibernate.connection.password", "28072004");
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect");
         configuration.setProperty("hibernate.show_sql" ,"true");
-        configuration.setProperty("hibernate.hbm2ddl.auto" ,"create-drop");
+        configuration.setProperty("hibernate.hbm2ddl.auto" ,"update");
 
         configuration.addAnnotatedClass(PersonEntity.class);
         configuration.addAnnotatedClass(TaskEntity.class);
