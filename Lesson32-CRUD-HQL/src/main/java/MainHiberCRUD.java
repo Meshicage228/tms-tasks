@@ -4,6 +4,7 @@ import dto.PersonSearchDto;
 import dto.TaskSearchDto;
 import entity.PersonEntity;
 import entity.TaskEntity;
+import lombok.NonNull;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static java.util.Objects.nonNull;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class MainHiberCRUD {
@@ -84,13 +86,14 @@ public class MainHiberCRUD {
 
         personDao.delete(vladWorker);*/
 
-        PersonSearchDto search = PersonSearchDto.builder()
-                .name("Vlad")
-                .sex(Sex.MAN)
+        // TODO : Put in new classes
+
+        PersonSearchDto searchPerson = PersonSearchDto.builder()
+                .dateOfBirth(LocalDate.parse("1983-04-06"))
+                .sex(Sex.WOMAN)
                 .build();
 
-        TaskSearchDto searchDto = TaskSearchDto.builder()
-                .readiness(Readiness.DONE)
+        TaskSearchDto searchPhone = TaskSearchDto.builder()
                 .build();
 
         Session session = Dao.openSessionAndTransaction();
@@ -98,19 +101,28 @@ public class MainHiberCRUD {
 
         List list;
 
-        if(search == null){
+        if(searchPerson == null){
             list = criteria.list();
         }else {
-            if(isNotBlank(search.getName())){
-                criteria.add(Restrictions.eq("name",search.getName()));
+            if(isNotBlank(searchPerson.getName())){
+                criteria.add(Restrictions.eq("name",searchPerson.getName()));
             }
-            if(Objects.nonNull(search.getSex())){
-                criteria.add(Restrictions.eq("sex", search.getSex()));
+            if(nonNull(searchPerson.getSex())){
+                criteria.add(Restrictions.eq("sex", searchPerson.getSex()));
+            }
+            if(nonNull(searchPerson.getDateOfBirth())){
+                criteria.add(Restrictions.between("dateOfBirth", LocalDate.parse("1982-08-12"), LocalDate.parse("2010-11-12")));
             }
         }
 
         Criteria criteriaPhone = criteria.createCriteria("pe.entityList", "pt");
-        criteria.add(Restrictions.eq("pt.readiness", searchDto.getReadiness()));
+        if(searchPerson == null){
+            list = criteria.list();
+        }else {
+            if(nonNull(searchPhone.getReadiness())){
+                criteriaPhone.add(Restrictions.eq("pt.readiness", searchPhone.getReadiness()));
+            }
+        }
 
         criteria.list().forEach(System.out::println);
 
