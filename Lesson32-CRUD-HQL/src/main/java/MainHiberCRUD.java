@@ -10,6 +10,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
+import searchCriteria.PersonSearch;
 import service.Dao;
 import service.impl.PersonDao;
 import service.impl.TaskDao;
@@ -24,7 +25,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class MainHiberCRUD {
     public static void main(String[] args) {
-        /*PersonDao personDao = new PersonDao();
+        PersonDao personDao = new PersonDao();
         TaskDao taskDao = new TaskDao();
 
         PersonEntity vladWorker = PersonEntity.builder()
@@ -84,48 +85,23 @@ public class MainHiberCRUD {
         System.out.println("Delete and update task");
         System.out.println(taskDao.getAll());
 
-        personDao.delete(vladWorker);*/
+        personDao.delete(vladWorker);
 
-        // TODO : Put in new classes
-
-        PersonSearchDto searchPerson = PersonSearchDto.builder()
-                .dateOfBirth(LocalDate.parse("1983-04-06"))
-                .sex(Sex.WOMAN)
+        PersonSearchDto dto = PersonSearchDto.builder()
+                .name("Vlad")
                 .build();
 
-        TaskSearchDto searchPhone = TaskSearchDto.builder()
+        TaskSearchDto dto1 = TaskSearchDto.builder()
+                .nameOfTask("bugFixing")
                 .build();
 
-        Session session = Dao.openSessionAndTransaction();
-        Criteria criteria = session.createCriteria(PersonEntity.class, "pe");
+        List<PersonEntity> personEntities = PersonSearch.personCriteria(dto);
+        List<PersonEntity> byTaskCriteria = PersonSearch.getByTaskCriteria(dto1);
 
-        List list;
+        personEntities.forEach(System.out::println);
+        System.out.println("/////////");
+        byTaskCriteria.forEach(System.out::println);
 
-        if(searchPerson == null){
-            list = criteria.list();
-        }else {
-            if(isNotBlank(searchPerson.getName())){
-                criteria.add(Restrictions.eq("name",searchPerson.getName()));
-            }
-            if(nonNull(searchPerson.getSex())){
-                criteria.add(Restrictions.eq("sex", searchPerson.getSex()));
-            }
-            if(nonNull(searchPerson.getDateOfBirth())){
-                criteria.add(Restrictions.between("dateOfBirth", LocalDate.parse("1982-08-12"), LocalDate.parse("2010-11-12")));
-            }
-        }
 
-        Criteria criteriaPhone = criteria.createCriteria("pe.entityList", "pt");
-        if(searchPerson == null){
-            list = criteria.list();
-        }else {
-            if(nonNull(searchPhone.getReadiness())){
-                criteriaPhone.add(Restrictions.eq("pt.readiness", searchPhone.getReadiness()));
-            }
-        }
-
-        criteria.list().forEach(System.out::println);
-
-        Dao.closeSessionAndTransaction(session);
     }
 }
