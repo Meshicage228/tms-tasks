@@ -15,7 +15,7 @@ import thisProject.example.service.PersonEntityDaoImpl;
 @Controller
 @RequestMapping("/mainPage")
 public class MainPageController {
-    private PersonEntityDaoImpl service;
+    private final PersonEntityDaoImpl service;
     @GetMapping
     public String home(){
         return "mainHomePage";

@@ -12,7 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Repository
 public class PersonEntityDaoImpl implements DAO<PersonEntity> {
-    private  SessionFactory factory;
+    private final SessionFactory factory;
 
     @Override
     public void save(PersonEntity entity) {
