@@ -16,22 +16,25 @@
 </head>
 <body>
 
-<div class="main-content" style="width: 300px; height: 200px; margin: auto">
-<%--@elvariable id="person" type="thisProject.example.entity.PersonEntity"--%>
-<sf:form action="/mainPage" method="post" modelAttribute="person">
+<div class="main-content" style="width: 500px; height: 500px; margin: auto;">
+<sf:form action="/mainPage" method="post">
     <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <sf:input path="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+        <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+    </div>
+    <div class="form-group">
+        <label for="nameOfPotentialUser">Put Name</label>
+        <input name="name" type="text" class="form-control" id="nameOfPotentialUser" placeholder="Enter Name"/>
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <sf:input path="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
+        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
     </div>
-    <sf:select path="title" class="form-control">
-        <sf:option selected ="true" value="WORKER">Worker</sf:option>
-        <sf:option value="MANAGER">Manager</sf:option>
-        <sf:option value="DIRECTOR">Director</sf:option>
-    </sf:select>
+    <select name="title" class="form-control">
+        <option name="title" selected ="true" value="WORKER">Worker</option>
+        <option name="title" value="MANAGER">Manager</option>
+        <option name="title" value="DIRECTOR">Director</option>
+    </select>
     <button type="submit" class="btn btn-primary">Submit</button>
 </sf:form>
 </div>
