@@ -8,7 +8,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.apachecommons.CommonsLog;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.context.annotation.RequestScope;
@@ -25,21 +27,25 @@ import java.util.UUID;
 @Builder
 
 @Entity
-@Table(name = "persons")
+@Table(name = "persons"/*, uniqueConstraints = @UniqueConstraint(name = "uniq_id", columnNames = "name"),
+    indexes = @Index(unique = true, columnList = "user_id")*/)
 public class PersonEntity {
     @Id
-    @GeneratedValue
-    @GenericGenerator(name = "generic_uuid", strategy = "org.hibernate.id.UUIDGenerator")
-    private UUID id;
-    @NotBlank(message = "field is empty!")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
     private String password;
     private String email;
     @Enumerated(value = EnumType.STRING)
     private JobTitle title;
 
-    @Temporal(value = TemporalType.TIME)
+    @CreationTimestamp
     private Date timeOfCreation;
 
+    @UpdateTimestamp
+    private Date updated;
+
+    @Version
+    private Integer version;
 
 }

@@ -12,8 +12,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PersonEntityDto {
-    private UUID id;
+
+public class PersonDto {
+    private Integer id;
     private String name;
     private String password;
     private String email;
