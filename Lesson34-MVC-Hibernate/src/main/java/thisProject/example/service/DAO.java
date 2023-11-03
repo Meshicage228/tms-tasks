@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import java.util.List;
 
 public interface DAO<T>{
-    void save(T entity);
+    T save(T entity);
 
     List<T> getAll();
 
@@ -15,4 +15,5 @@ public interface DAO<T>{
 
     void delete(T obj);
 
+    void deleteById(Integer id);
 }
