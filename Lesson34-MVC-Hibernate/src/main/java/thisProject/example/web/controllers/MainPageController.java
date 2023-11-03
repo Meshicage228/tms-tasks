@@ -8,6 +8,9 @@ import org.springframework.web.servlet.ModelAndView;
 import thisProject.example.entity.PersonEntity;
 import thisProject.example.service.PersonEntityDaoImpl;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @RequiredArgsConstructor
 
 @Controller
@@ -20,16 +23,10 @@ public class MainPageController {
     }
 
     @PostMapping
-    public ModelAndView page(@RequestParam(name = "p_name") String name,
-                             @RequestParam(name = "p_password") String password,
-                             @RequestParam(name = "p_email") String email){
+    public ModelAndView page(@ModelAttribute(name = "myPerson") PersonEntity person){
         ModelAndView modelAndView = new ModelAndView("next");
 
-        PersonEntity person = PersonEntity.builder()
-                .name(name)
-                .email(email)
-                .password(password)
-                .build();
+        person.setTimeOfCreation(new Date());
 
         modelAndView.addObject("person", person);
 

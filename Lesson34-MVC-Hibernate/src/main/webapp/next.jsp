@@ -15,9 +15,7 @@
 </head>
 <body>
 hellooooooo
-${person.name}
-${person.password}
-${person.email}
+
 <%--<j:forEach var="p" items="${person}">
     <sf:label path="${p.name}"/>
     <sf:label path="${p.password}"/>
