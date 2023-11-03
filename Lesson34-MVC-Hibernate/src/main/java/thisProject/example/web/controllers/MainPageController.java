@@ -5,30 +5,31 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import thisProject.example.entity.PersonEntity;
-import thisProject.example.service.PersonEntityDaoImpl;
+import thisProject.example.dto.PersonDto;
+import thisProject.example.service.impl.PersonDaoImpl;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 
 @RequiredArgsConstructor
 
 @Controller
 @RequestMapping("/mainPage")
 public class MainPageController {
-    private final PersonEntityDaoImpl service;
+    private final PersonDaoImpl service;
     @GetMapping
     public String home(){
         return "mainHomePage";
     }
 
     @PostMapping
-    public ModelAndView page(@ModelAttribute(name = "myPerson") PersonEntity person){
+    public ModelAndView page(/*@ModelAttribute(name = "myPerson") */PersonDto person){
+        PersonDto saved = service.save(person);
+
         ModelAndView modelAndView = new ModelAndView("next");
 
-        person.setTimeOfCreation(new Date());
+        List<PersonDto> all = service.getAll();
 
-        modelAndView.addObject("person", person);
+        modelAndView.addObject("saved", all);
 
         return modelAndView;
     }
