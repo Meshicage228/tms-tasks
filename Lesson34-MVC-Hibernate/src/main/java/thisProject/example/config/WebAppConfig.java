@@ -11,23 +11,15 @@ import thisProject.example.entity.PersonEntity;
 public class WebAppConfig {
     @Bean
     SessionFactory sessionFactory() throws ClassNotFoundException {
-        org.hibernate.cfg.Configuration configuration = new org.hibernate.cfg.Configuration();
-        configuration.addAnnotatedClass(PersonEntity.class);
-
-
         Class.forName("org.postgresql.Driver");
-
-
-        configuration.setProperty("hibernate.connection-driver_class", "org.postgresql.Driver");
-        configuration.setProperty("hibernate.connection.url", "jdbc:postgresql://localhost:5432/for_personal");
-        configuration.setProperty("hibernate.connection.username", "postgres");
-        configuration.setProperty("hibernate.connection.password", "28072004");
-        configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect");
-        configuration.setProperty("hibernate.show_sql" ,"true");
-        configuration.setProperty("hibernate.hbm2ddl.auto" ,"create-drop");
-        SessionFactory sessionFactory = configuration.buildSessionFactory();
-
-        return sessionFactory;
+        return new org.hibernate.cfg.Configuration()
+        .setProperty("hibernate.connection-driver_class", "org.postgresql.Driver")
+        .setProperty("hibernate.connection.url", "jdbc:postgresql://localhost:5432/for_personal")
+        .setProperty("hibernate.connection.username", "postgres")
+        .setProperty("hibernate.connection.password", "28072004")
+        .setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect")
+        .setProperty("hibernate.show_sql" ,"true")
+        .setProperty("hibernate.hbm2ddl.auto" ,"create-drop").buildSessionFactory();
     }
 
     @Bean

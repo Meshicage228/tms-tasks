@@ -7,11 +7,21 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="j" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
-${name}
+hellooooooo
+${person.name}
+${person.password}
+${person.email}
+<%--<j:forEach var="p" items="${person}">
+    <sf:label path="${p.name}"/>
+    <sf:label path="${p.password}"/>
+    <sf:label path="${p.email}"/>
+</j:forEach>--%>
 </body>
 </html>
