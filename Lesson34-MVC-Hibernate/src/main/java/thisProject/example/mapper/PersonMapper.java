@@ -1,13 +1,26 @@
 package thisProject.example.mapper;
 
 import org.mapstruct.Mapper;
-import thisProject.example.dto.PersonEntityDto;
+import org.mapstruct.Mapping;
+import thisProject.example.dto.PersonDto;
 import thisProject.example.entity.PersonEntity;
 
-@Mapper
+@Mapper(
+        componentModel = "spring"
+)
 public interface PersonMapper {
 
-    PersonEntityDto fromPersonToPersonEntityDto(PersonEntity person);
+    @Mapping(target = "name", source = "name")
+    @Mapping(target = "email", source = "email")
+    @Mapping(target = "password", source = "password")
+    @Mapping(target = "title", source = "title")
+    PersonDto fromEntityToDto(PersonEntity person);
 
-    PersonEntity fromPersonDtoToPersonI(PersonEntityDto dto);
+
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "name")
+    @Mapping(target = "email", source = "email")
+    @Mapping(target = "password", source = "password")
+    @Mapping(target = "title", source = "title")
+    PersonEntity fromDtoToEntity(PersonDto dto);
 }

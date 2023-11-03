@@ -19,7 +19,9 @@ public class WebAppConfig {
         .setProperty("hibernate.connection.password", "28072004")
         .setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL95Dialect")
         .setProperty("hibernate.show_sql" ,"true")
-        .setProperty("hibernate.hbm2ddl.auto" ,"create-drop").buildSessionFactory();
+        .setProperty("hibernate.hbm2ddl.auto" ,"update")
+        .addAnnotatedClass(PersonEntity.class)
+        .buildSessionFactory();
     }
 
     @Bean
