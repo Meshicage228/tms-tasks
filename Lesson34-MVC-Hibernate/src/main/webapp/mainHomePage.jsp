@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <html>
@@ -17,25 +18,25 @@
 <body>
 
 <div class="main-content" style="width: 500px; height: 500px; margin: auto;">
-<sf:form action="/mainPage" method="post">
+<sf:form action="/mainPage" method="post" modelAttribute="">
     <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+        <sf:input path="p_email" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/><sf:errors path="p_email"/>
     </div>
     <div class="form-group">
         <label for="nameOfPotentialUser">Put Name</label>
-        <input name="name" type="text" class="form-control" id="nameOfPotentialUser" placeholder="Enter Name"/>
+        <sf:input path="p_name" name="name" type="text" class="form-control" id="nameOfPotentialUser" placeholder="Enter Name"/><sf:errors path="name"/>
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
+        <sf:input path="p_password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/><sf:errors path="password"/>
     </div>
-    <select name="title" class="form-control">
-        <option name="title" selected ="true" value="WORKER">Worker</option>
-        <option name="title" value="MANAGER">Manager</option>
-        <option name="title" value="DIRECTOR">Director</option>
-    </select>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <sf:select path="p_title" name="title" class="form-control">
+        <sf:option name="p_title" selected ="true" value="WORKER">Worker</sf:option>
+        <sf:option name="p_title" value="MANAGER">Manager</sf:option>
+        <sf:option name="p_title" value="DIRECTOR">Director</sf:option>
+    </sf:select>
+    <sf:button type="submit" class="btn btn-primary">Submit</sf:button>
 </sf:form>
 </div>
 

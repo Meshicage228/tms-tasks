@@ -34,7 +34,7 @@
         <td>${person.name}</td>
         <td>${person.email}</td>
         <td>${person.title}</td>
-        <td><input type="hidden" name="deleteById" value="${person.id}"></td>
+        <input type="hidden" name="deleteById" value="${person.id}">
         <td><input type="submit" name="delete_person" value="DELETE"></td>
         </sf:form>
     </tr>

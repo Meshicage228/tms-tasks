@@ -3,11 +3,14 @@ package thisProject.example.config;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import thisProject.example.entity.PersonEntity;
 
 @Configuration
+@EnableWebMvc
 public class WebAppConfig {
     @Bean
     SessionFactory sessionFactory() throws ClassNotFoundException {
