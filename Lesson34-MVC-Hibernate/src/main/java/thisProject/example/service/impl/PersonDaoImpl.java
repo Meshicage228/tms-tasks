@@ -13,6 +13,7 @@ import thisProject.example.entity.PersonEntity;
 import thisProject.example.mapper.PersonMapper;
 import thisProject.example.service.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -47,10 +48,15 @@ public class PersonDaoImpl implements DAO<PersonDto> {
 
         Query query = session.createQuery("FROM PersonEntity");
         List list = query.list();
+        List<PersonDto> answer = new ArrayList<>();
+
+        for (Object ob: list) {
+            answer.add(mapper.fromEntityToDto((PersonEntity) ob));
+        }
 
         transaction.commit();
         session.close();
-        return list;
+        return answer;
     }
 
     @Override
@@ -58,12 +64,14 @@ public class PersonDaoImpl implements DAO<PersonDto> {
         Session session = factory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        PersonDto personDto = session.get(PersonDto.class, id);
+        PersonEntity personDto = session.get(PersonEntity.class, id);
+
+        PersonDto dto = mapper.fromEntityToDto(personDto);
 
         transaction.commit();
         session.close();
 
-        return personDto;
+        return dto;
     }
 
     @Override

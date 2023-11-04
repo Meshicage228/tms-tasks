@@ -2,12 +2,14 @@ package thisProject.example.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.stereotype.Component;
 import thisProject.example.dto.PersonDto;
 import thisProject.example.entity.PersonEntity;
 
 @Mapper(
         componentModel = "spring"
 )
+@Component
 public interface PersonMapper {
 
     @Mapping(target = "p_name", source = "name")

@@ -17,21 +17,21 @@
 </head>
 <body>
 
-<div class="main-content" style="width: 500px; height: 500px; margin: auto;">
-<sf:form action="/mainPage" method="post" modelAttribute="">
+<div class="main-content" style="width: 500px; height: 500px; margin: auto">
+<sf:form action="/mainPage" method="post" modelAttribute="per">
     <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <sf:input path="p_email" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/><sf:errors path="p_email"/>
+        <sf:input path="p_email" name="p_email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/><sf:errors path="p_email"/>
     </div>
     <div class="form-group">
         <label for="nameOfPotentialUser">Put Name</label>
-        <sf:input path="p_name" name="name" type="text" class="form-control" id="nameOfPotentialUser" placeholder="Enter Name"/><sf:errors path="name"/>
+        <sf:input path="p_name" name="p_name" type="text" class="form-control" id="nameOfPotentialUser" placeholder="Enter Name"/><sf:errors path="p_name"/>
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <sf:input path="p_password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/><sf:errors path="password"/>
+        <sf:input path="p_password" name="p_password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/><sf:errors path="p_password"/>
     </div>
-    <sf:select path="p_title" name="title" class="form-control">
+    <sf:select path="p_title" name="p_title" class="form-control">
         <sf:option name="p_title" selected ="true" value="WORKER">Worker</sf:option>
         <sf:option name="p_title" value="MANAGER">Manager</sf:option>
         <sf:option name="p_title" value="DIRECTOR">Director</sf:option>
@@ -40,6 +40,32 @@
 </sf:form>
 </div>
 
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Title</th>
+        <th scope="col">Delete</th>
+    </tr>
+    </thead>
+    <jstl:forEach var="p" items="${saved}">
+        <tbody>
+        <tr>
+            <sf:form action="/mainPage/delete" method="post">
+                <th scope="row">${p.id}</th>
+                <td>${p.p_name}</td>
+                <td>${p.p_email}</td>
+                <td>${p.p_title}</td>
+                <input type="hidden" name="deleteById" value="${p.id}">
+                <td><input type="submit" name="delete_person" value="DELETE"></td>
+            </sf:form>
+        </tr>
+        </tbody>
+    </jstl:forEach>
+</table>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>

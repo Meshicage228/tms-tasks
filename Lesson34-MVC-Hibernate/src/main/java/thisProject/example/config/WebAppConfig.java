@@ -3,10 +3,12 @@ package thisProject.example.config;
 import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import thisProject.example.dto.PersonDto;
 import thisProject.example.entity.PersonEntity;
 
 @Configuration
@@ -28,10 +30,10 @@ public class WebAppConfig {
     }
 
     @Bean
-    ViewResolver viewResolver(){
-        InternalResourceViewResolver view = new InternalResourceViewResolver();
-        view.setSuffix("/pages/");
-        view.setSuffix(".jsp");
-        return view;
+    ViewResolver viewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/pages/");
+        resolver.setSuffix(".jsp");
+        return resolver;
     }
 }

@@ -1,3 +1,4 @@
+/*
 package thisProject.example.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,3 +18,4 @@ public class WebRegisterConfig implements WebMvcConfigurer {
         registry.addInterceptor(interceptor).addPathPatterns("/next");
     }
 }
+*/
