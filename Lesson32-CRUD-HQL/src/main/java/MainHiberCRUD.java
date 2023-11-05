@@ -1,12 +1,27 @@
 import domain.Readiness;
 import domain.Sex;
+import dto.PersonSearchDto;
+import dto.TaskSearchDto;
 import entity.PersonEntity;
 import entity.TaskEntity;
+import lombok.NonNull;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
+import searchCriteria.PersonSearch;
+import service.Dao;
 import service.impl.PersonDao;
 import service.impl.TaskDao;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+
+import static java.util.Objects.nonNull;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class MainHiberCRUD {
     public static void main(String[] args) {
@@ -71,5 +86,22 @@ public class MainHiberCRUD {
         System.out.println(taskDao.getAll());
 
         personDao.delete(vladWorker);
+
+        PersonSearchDto dto = PersonSearchDto.builder()
+                .name("Vlad")
+                .build();
+
+        TaskSearchDto dto1 = TaskSearchDto.builder()
+                .nameOfTask("bugFixing")
+                .build();
+
+        List<PersonEntity> personEntities = PersonSearch.personCriteria(dto);
+        List<PersonEntity> byTaskCriteria = PersonSearch.getByTaskCriteria(dto1);
+
+        personEntities.forEach(System.out::println);
+        System.out.println("/////////");
+        byTaskCriteria.forEach(System.out::println);
+
+
     }
 }

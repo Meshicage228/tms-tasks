@@ -2,6 +2,7 @@ package service.impl;
 
 import domain.Readiness;
 import entity.TaskEntity;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import service.Dao;
@@ -20,8 +21,8 @@ public class TaskDao implements Dao<TaskEntity> {
     @Override
     public List<TaskEntity> getAll() {
         Session session = Dao.openSessionAndTransaction();
-        Query query = session.createQuery("FROM TaskEntity");
-        List list = query.list();
+        Criteria criteria = session.createCriteria(TaskEntity.class);
+        List list = criteria.list();
         Dao.closeSessionAndTransaction(session);
         return list;
     }

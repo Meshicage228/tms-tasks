@@ -4,6 +4,7 @@ import config.DataBaseConfiguration;
 import domain.Readiness;
 import entity.PersonEntity;
 import entity.TaskEntity;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import service.Dao;
@@ -23,8 +24,8 @@ public class PersonDao implements Dao<PersonEntity> {
     @Override
     public List<PersonEntity> getAll() {
         Session session = Dao.openSessionAndTransaction();
-        Query fromPersonEntity = session.createQuery("FROM PersonEntity");
-        List list = fromPersonEntity.list();
+        Criteria criteria = session.createCriteria(PersonEntity.class);
+        List list = criteria.list();
         Dao.closeSessionAndTransaction(session);
         return list;
     }
