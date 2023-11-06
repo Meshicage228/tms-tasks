@@ -10,12 +10,12 @@ import thisProject.example.web.controllers.MyInterceptor;
 
 @Configuration
 public class WebRegisterConfig implements WebMvcConfigurer {
-
     @Autowired
-    private MyInterceptor interceptor;
+    private MyInterceptor myInterceptor;
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(interceptor).addPathPatterns("/next");
+        registry.addInterceptor(myInterceptor).addPathPatterns("/mainPage/save");
     }
 }
 */

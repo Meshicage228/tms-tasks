@@ -16,9 +16,8 @@
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-
 <div class="main-content" style="width: 500px; height: 500px; margin: auto">
-<sf:form action="/mainPage" method="post" modelAttribute="per">
+<sf:form action="/mainPage/save" method="post" modelAttribute="per">
     <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
         <sf:input path="p_email" name="p_email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/><sf:errors path="p_email"/>
@@ -38,6 +37,18 @@
     </sf:select>
     <sf:button type="submit" class="btn btn-primary">Submit</sf:button>
 </sf:form>
+    <jstl:choose>
+        <jstl:when test="${isUnique == true}">
+            Success!! Saved info about person!
+        </jstl:when>
+        <jstl:when test="${isUnique == false}">
+            This person already exists!
+        </jstl:when>
+        <jstl:otherwise>
+            Write correct data!
+        </jstl:otherwise>
+
+    </jstl:choose>
 </div>
 
 

@@ -11,7 +11,6 @@ import thisProject.example.service.impl.PersonDaoImpl;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Random;
 
 @RequiredArgsConstructor
 
@@ -19,19 +18,32 @@ import java.util.Random;
 @RequestMapping("/mainPage")
 public class MainPageController {
     private final PersonDaoImpl service;
+
     @GetMapping("")
+    public ModelAndView mainPage(@ModelAttribute(name = "per") PersonDto user){
+        ModelAndView modelAndView = new ModelAndView("mainHomePage");
+        modelAndView.addObject("saved" , service.getAll());
+        return modelAndView;
+    }
+    @GetMapping("/save")
     public ModelAndView showInfoPage(@ModelAttribute(name = "per") PersonDto user){
         ModelAndView modelAndView = new ModelAndView("mainHomePage");
         modelAndView.addObject("saved" , service.getAll());
         return modelAndView;
     }
 
-    @PostMapping("")
+    @PostMapping("/save")
     public ModelAndView page(@ModelAttribute(name = "per")@Valid PersonDto personDto, BindingResult bindingResult){
         ModelAndView modelAndView = new ModelAndView("mainHomePage");
-        if(!bindingResult.hasFieldErrors()){
+        if(!bindingResult.hasFieldErrors() && service.isUnique(personDto)){
             service.save(personDto);
             modelAndView.addObject("per", new PersonDto());
+            modelAndView.addObject("isUnique", true);
+        }else {
+          /*  PersonDto newP = new PersonDto();
+            newP.setP_password(personDto.getP_password());
+            modelAndView.addObject("per", newP);*/
+            modelAndView.addObject("isUnique", false);
         }
         modelAndView.addObject("saved", service.getAll());
 

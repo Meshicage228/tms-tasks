@@ -5,9 +5,9 @@ import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 import thisProject.example.dto.PersonDto;
 import thisProject.example.entity.PersonEntity;
 import thisProject.example.mapper.PersonMapper;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
-@Service
+@Repository
 public class PersonDaoImpl implements DAO<PersonDto> {
 
     private final SessionFactory factory;
@@ -95,6 +95,19 @@ public class PersonDaoImpl implements DAO<PersonDto> {
 
         transaction.commit();
         session.close();
+    }
+    public boolean isUnique(PersonDto personDto){
+        Session session = factory.openSession();
+        Transaction transaction = session.beginTransaction();
 
+        NativeQuery nativeQuery = session.createNativeQuery("SELECT * FROM persons WHERE name = ?1 AND email = ?2")
+                .setParameter(1, personDto.getP_name())
+                .setParameter(2, personDto.getP_email());
+        List list = nativeQuery.list();
+
+        transaction.commit();
+        session.close();
+
+        return list.isEmpty();
     }
 }
