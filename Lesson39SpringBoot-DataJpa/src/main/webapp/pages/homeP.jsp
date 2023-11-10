@@ -11,8 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<form method="get" action="/home">
-    <button value="hello" type="submit"></button>
-</form>
+hello from jsp
 </body>
 </html>

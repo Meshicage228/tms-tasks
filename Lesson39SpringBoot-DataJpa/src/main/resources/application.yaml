@@ -14,7 +14,7 @@ spring:
       ddl-auto: create
   mvc:
     view:
-      prefix: /WEB-INF/pages/
+      prefix: /pages/
       suffix: .jsp
 management:
   endpoints:

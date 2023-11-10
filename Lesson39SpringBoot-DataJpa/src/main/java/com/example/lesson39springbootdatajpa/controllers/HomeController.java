@@ -11,11 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/home")
 public class HomeController {
     @GetMapping
-    public ModelAndView getMainPage(){
-        return new ModelAndView("homeP");
+    public String getMainPage(){
+        return "homeP";
     }
     @PostMapping
-    public ModelAndView get(){
-        return new ModelAndView("homeP");
+    public String get(){
+        return "homeP";
     }
 }
