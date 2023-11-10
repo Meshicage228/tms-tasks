@@ -10,4 +10,5 @@ public class Lesson39SpringBootDataJpaApplication {
         SpringApplication.run(Lesson39SpringBootDataJpaApplication.class, args);
     }
 
+
 }
