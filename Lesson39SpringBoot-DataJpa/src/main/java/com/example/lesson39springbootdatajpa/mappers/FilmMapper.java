@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 @Mapper(
         componentModel = "spring"
 )
+@Component
 public interface FilmMapper {
     @Mapping(target = "id", source = "id")
     @Mapping(target = "title", source = "title")
