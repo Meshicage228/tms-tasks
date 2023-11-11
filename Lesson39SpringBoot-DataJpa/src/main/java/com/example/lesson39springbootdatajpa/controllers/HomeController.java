@@ -37,7 +37,7 @@ public class HomeController {
         return modelAndView;
     }
     @PostMapping("/save")
-    public String get(@ModelAttribute(name = "film") @Valid FilmDto filmDto, BindingResult bindingResult){
+    public ModelAndView get(@ModelAttribute(name = "film") @Valid FilmDto filmDto, BindingResult bindingResult){
         ModelAndView modelAndView = new ModelAndView("mainPage");
         if(!bindingResult.hasFieldErrors()){
 
@@ -54,6 +54,6 @@ public class HomeController {
         }
         modelAndView.addObject("films", result);
 
-        return "mainPage";
+        return modelAndView;
     }
 }

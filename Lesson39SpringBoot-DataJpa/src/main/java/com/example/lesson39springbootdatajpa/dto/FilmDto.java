@@ -31,7 +31,7 @@ public class FilmDto {
 
     private Genre genre;
 
-    @NotNull(message = "Enter year of creation")
+    @NotBlank(message = "Enter year of creation")
     private String dateOfCreation;
 
     @Min(value = 0, message = "Incorrect number") @Max(value = 10, message = "Incorrect number")
