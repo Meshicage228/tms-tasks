@@ -21,8 +21,6 @@ import javax.validation.constraints.NotNull;
 @Data
 @Builder
 
-@Component
-@RequestScope
 public class FilmDto {
     private Integer id;
 

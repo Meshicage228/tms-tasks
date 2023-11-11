@@ -8,10 +8,7 @@ import com.example.lesson39springbootdatajpa.mappers.FilmMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -27,7 +24,7 @@ public class HomeController {
     private final FilmMapper mapper;
     @GetMapping("")
     public ModelAndView getMainPage(@ModelAttribute(name = "film")FilmDto filmDto){
-        ModelAndView modelAndView = new ModelAndView("mainPage");
+        ModelAndView modelAndView = new ModelAndView("homePage");
         List<FilmDto> result = new ArrayList<>();
 
         for (FilmEntity ob : rep.findAll()) {
@@ -37,8 +34,8 @@ public class HomeController {
         return modelAndView;
     }
     @PostMapping("/save")
-    public ModelAndView get(@ModelAttribute(name = "film") @Valid FilmDto filmDto, BindingResult bindingResult){
-        ModelAndView modelAndView = new ModelAndView("mainPage");
+    public ModelAndView get(@Valid @ModelAttribute(name = "film") FilmDto filmDto, BindingResult bindingResult){
+        ModelAndView modelAndView = new ModelAndView("redirect:/home");
         if(!bindingResult.hasFieldErrors()){
 
             FilmEntity entity = mapper.toEntity(filmDto);
@@ -47,13 +44,11 @@ public class HomeController {
 
             modelAndView.addObject("film", new FilmDto());
         }
-        List<FilmDto> result = new ArrayList<>();
-
-        for (FilmEntity ob : rep.findAll()) {
-            result.add(mapper.toDto(ob));
-        }
-        modelAndView.addObject("films", result);
-
         return modelAndView;
+    }
+    @PostMapping("/delete")
+    public ModelAndView delete(@RequestParam(name = "idToDel")Integer id){
+        rep.deleteById(id);
+        return new ModelAndView("redirect:/home");
     }
 }
