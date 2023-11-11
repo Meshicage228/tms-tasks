@@ -33,10 +33,12 @@ dependencies {
 
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
-    implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
-    implementation group: 'org.hibernate.validator', name: 'hibernate-validator', version: '6.2.5.Final'
+    implementation 'javax.validation:validation-api:2.0.1.Final'
+    implementation 'org.hibernate.validator:hibernate-validator'
+    implementation group: 'jakarta.servlet.jsp.jstl', name: 'jakarta.servlet.jsp.jstl-api', version: '3.0.0'
 
     implementation group: 'javax.servlet', name: 'jstl', version: '1.2'
+    implementation group: 'jstl', name: 'jstl', version: '1.2'
 
     implementation "org.mapstruct:mapstruct:1.5.3.Final"
     annotationProcessor "org.projectlombok:lombok-mapstruct-binding:0.2.0"
