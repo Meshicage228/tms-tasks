@@ -51,4 +51,10 @@ public class HomeController {
         rep.deleteById(id);
         return new ModelAndView("redirect:/home");
     }
+    @PostMapping("/update/{idUpdate}")
+    public ModelAndView update(@RequestParam(name = "ratingNew")Float rating,
+                               @PathVariable(name = "idUpdate")Integer id){
+        rep.updateRatingById(rating, id);
+        return new ModelAndView("redirect:/home");
+    }
 }

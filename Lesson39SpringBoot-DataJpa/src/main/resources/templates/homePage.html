@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,10 +7,12 @@
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-<form method="post" th:action="@{/home/save}" th:object="${film}" class="mainContent" style="width: 300px; height: 300px; margin: auto; padding: 10px;">
+<form method="post" th:action="@{/home/save}" th:object="${film}" class="mainContent"
+      style="width: 300px; height: 300px; margin: auto; padding: 10px;">
     <div class="form-group">
         <label for="exampleInputTitle">Film title</label>
-        <input type="text" th:field="*{title}" name="title" class="form-control" id="exampleInputTitle" aria-describedby="emailHelp"
+        <input type="text" th:field="*{title}" name="title" class="form-control" id="exampleInputTitle"
+               aria-describedby="emailHelp"
                placeholder="Enter film title">
         <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Incorrect date</p>
     </div>
@@ -27,7 +29,8 @@
     </select>
     <div class="form-group">
         <label for="exampleInputRating">Write rating</label>
-        <input type="number" class="form-control" th:field="*{rating}" name="rating"  placeholder="Enter rating from 0 to 10"
+        <input type="number" class="form-control" th:field="*{rating}" name="rating"
+               placeholder="Enter rating from 0 to 10"
                id="exampleInputRating">
         <p th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}">Incorrect date</p>
     </div>
@@ -51,7 +54,13 @@
         <td th:text="${film.title}"></td>
         <td th:text="${film.genre}"></td>
         <td th:text="${film.dateOfCreation}"></td>
-        <td th:text="${film.rating}"></td>
+        <form th:action="@{/home/update/{idUpdate}(idUpdate = ${film.getId()})}" method="post">
+            <td><label>
+                <input th:value="${film.rating}" name="ratingNew">
+            </label>
+                <button type="submit">CHANGE</button>
+            </td>
+        </form>
         <td>
             <form th:action="@{/home/delete(idToDel = ${film.getId()})}" method="post">
                 <button type="submit">DELETE</button>

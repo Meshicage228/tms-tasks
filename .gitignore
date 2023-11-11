@@ -7,6 +7,7 @@ build/
 .gitignore
 /.idea/dataSources*
 /.idea/shelf
+.idea/inspectionProfiles
 /.idea/inspectionProfiles/Project_Default.xml
 /.idea/jsLibraryMappings.xml
 /.idea/gradle.xml
