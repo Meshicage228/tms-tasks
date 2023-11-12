@@ -20,15 +20,15 @@ import lombok.NoArgsConstructor;
 public class FilmDto {
 
     private Integer id;
-    @NotBlank(message = "error")
+    @NotBlank(message = "Empty title")
     private String title;
 
     private Genre genre;
 
-    @NotBlank(message = "error")
+    @NotBlank(message = "Empty date")
     private String dateOfCreation;
 
-    @Min(value = 0, message = "error") @Max(value = 10, message = "error")
-    @NotNull(message = "error")
+    @Min(value = 0, message = "Wrong Number") @Max(value = 10, message = "Wrong Number")
+    @NotNull(message = "Empty number")
     private Float rating;
 }
