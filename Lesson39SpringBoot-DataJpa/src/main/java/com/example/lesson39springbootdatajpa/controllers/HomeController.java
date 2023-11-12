@@ -25,12 +25,8 @@ public class HomeController {
     @GetMapping("")
     public ModelAndView getMainPage(@ModelAttribute(name = "film")FilmDto filmDto){
         ModelAndView modelAndView = new ModelAndView("homePage");
-        List<FilmDto> result = new ArrayList<>();
-
-        for (FilmEntity ob : rep.findAll()) {
-            result.add(mapper.toDto(ob));
-        }
-        modelAndView.addObject("films", result);
+        
+        modelAndView.addObject("films", mapper.toDto(rep.findAll()));
         return modelAndView;
     }
     @PostMapping("/save")
