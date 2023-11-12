@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 @RequiredArgsConstructor
 
@@ -23,27 +21,24 @@ public class HomeController {
     private final FilmRepository rep;
     private final FilmMapper mapper;
     @GetMapping("")
-    public ModelAndView getMainPage(@ModelAttribute(name = "film")FilmDto filmDto){
+    public ModelAndView getMainPage(@ModelAttribute("modelFilm")FilmDto filmDto){
         ModelAndView modelAndView = new ModelAndView("homePage");
-        List<FilmDto> result = new ArrayList<>();
 
-        for (FilmEntity ob : rep.findAll()) {
-            result.add(mapper.toDto(ob));
-        }
-        modelAndView.addObject("films", result);
+        modelAndView.addObject("films", mapper.listToDto(rep.findAllOrderByRating()));
         return modelAndView;
     }
     @PostMapping("/save")
-    public ModelAndView get(@Valid @ModelAttribute(name = "film") FilmDto filmDto, BindingResult bindingResult){
-        ModelAndView modelAndView = new ModelAndView("redirect:/home");
+    public ModelAndView get(@Valid @ModelAttribute("modelFilm") FilmDto filmDto, BindingResult bindingResult){
+        ModelAndView modelAndView = new ModelAndView("homePage");
         if(!bindingResult.hasFieldErrors()){
 
             FilmEntity entity = mapper.toEntity(filmDto);
 
             rep.save(entity);
 
-            modelAndView.addObject("film", new FilmDto());
+            modelAndView.addObject("modelFilm", new FilmDto());
         }
+        modelAndView.addObject("films", mapper.listToDto(rep.findAllOrderByRating()));
         return modelAndView;
     }
     @PostMapping("/delete")
@@ -52,7 +47,7 @@ public class HomeController {
         return new ModelAndView("redirect:/home");
     }
     @PostMapping("/update/{idUpdate}")
-    public ModelAndView update(@RequestParam(name = "ratingNew")Float rating,
+    public ModelAndView update(@Valid @RequestParam(name = "ratingNew")Float rating,
                                @PathVariable(name = "idUpdate")Integer id){
         rep.updateRatingById(rating, id);
         return new ModelAndView("redirect:/home");

@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public interface FilmRepository extends JpaRepository<FilmEntity, Integer> {
 
@@ -15,4 +17,7 @@ public interface FilmRepository extends JpaRepository<FilmEntity, Integer> {
     @Transactional
     @Query("UPDATE FilmEntity SET rating = :rating WHERE id = :id")
     void updateRatingById(Float rating, Integer id);
+
+    @Query(value = "SELECT* FROM films ORDER BY rating ASC", nativeQuery = true)
+    List<FilmEntity> findAllOrderByRating();
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -7,36 +7,35 @@
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
-<form method="post" th:action="@{/home/save}" th:object="${film}" class="mainContent"
+<form method="post" th:action="@{/home/save}" th:object="${modelFilm}" class="mainContent"
       style="width: 300px; height: 300px; margin: auto; padding: 10px;">
     <div class="form-group">
         <label for="exampleInputTitle">Film title</label>
-        <input type="text" th:field="*{title}" name="title" class="form-control" id="exampleInputTitle"
+        <input type="text" th:field="*{title}" name="tit" class="form-control" id="exampleInputTitle"
                aria-describedby="emailHelp"
                placeholder="Enter film title">
         <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Incorrect date</p>
     </div>
     <div class="form-group">
         <label for="exampleInput">Write date of creation</label>
-        <input type="text" th:field="*{dateOfCreation}" name="dateOfCreation" class="form-control" id="exampleInput"
+        <input type="text" th:field="*{dateOfCreation}" name="date" class="form-control" id="exampleInput"
                placeholder="Enter date of creation">
         <p th:if="${#fields.hasErrors('dateOfCreation')}" th:errors="*{dateOfCreation}">Incorrect date</p>
     </div>
-    <select th:field="*{genre}" name="genre" class="form-control">
+    <select th:field="*{genre}" name="gen" class="form-control">
         <option th:value="HORROR">Horror</option>
         <option th:value="COMEDY">Comedy</option>
         <option th:value="DRAMA">Drama</option>
     </select>
     <div class="form-group">
         <label for="exampleInputRating">Write rating</label>
-        <input type="number" class="form-control" th:field="*{rating}" name="rating"
+        <input type="number" class="form-control" th:field="*{rating}" name="rate"
                placeholder="Enter rating from 0 to 10"
                id="exampleInputRating">
         <p th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}">Incorrect date</p>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
 <table class="table">
     <thead>
     <tr>
@@ -48,21 +47,21 @@
         <th scope="col">Delete</th>
     </tr>
     </thead>
-    <tbody th:each="film, rt : ${films}">
+    <tbody th:each="f, rt : ${films}">
     <tr>
         <th scope="row" th:text="${rt.count}"></th>
-        <td th:text="${film.title}"></td>
-        <td th:text="${film.genre}"></td>
-        <td th:text="${film.dateOfCreation}"></td>
-        <form th:action="@{/home/update/{idUpdate}(idUpdate = ${film.getId()})}" method="post">
+        <td th:text="${f.title}"></td>
+        <td th:text="${f.genre}"></td>
+        <td th:text="${f.dateOfCreation}"></td>
+        <form th:action="@{/home/update/{idUpdate}(idUpdate = ${f.id})}" method="post">
             <td><label>
-                <input th:value="${film.rating}" name="ratingNew">
+                <input th:value="${f.rating}" name="ratingNew">
             </label>
                 <button type="submit">CHANGE</button>
             </td>
         </form>
         <td>
-            <form th:action="@{/home/delete(idToDel = ${film.getId()})}" method="post">
+            <form th:action="@{/home/delete(idToDel = ${f.id})}" method="post">
                 <button type="submit">DELETE</button>
             </form>
         </td>
