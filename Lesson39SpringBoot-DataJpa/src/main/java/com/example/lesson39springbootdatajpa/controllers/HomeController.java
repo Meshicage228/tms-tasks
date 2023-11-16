@@ -5,6 +5,7 @@ import com.example.lesson39springbootdatajpa.dao.FilmRepository;
 import com.example.lesson39springbootdatajpa.dto.FilmDto;
 import com.example.lesson39springbootdatajpa.entity.FilmEntity;
 import com.example.lesson39springbootdatajpa.mappers.FilmMapper;
+import com.example.lesson39springbootdatajpa.service.impl.FilmDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -20,13 +21,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/home")
 public class HomeController {
-    private final FilmRepository rep;
+   private final FilmDao dao;
     private final FilmMapper mapper;
     @GetMapping("")
     public ModelAndView getMainPage(@ModelAttribute(name = "film")FilmDto filmDto){
         ModelAndView modelAndView = new ModelAndView("homePage");
         
-        modelAndView.addObject("films", mapper.toDto(rep.findAll()));
+        modelAndView.addObject("films", mapper.toDto(dao.getAll()));
         return modelAndView;
     }
     @PostMapping("/save")
@@ -36,7 +37,7 @@ public class HomeController {
 
             FilmEntity entity = mapper.toEntity(filmDto);
 
-            rep.save(entity);
+            dao.save(entity);
 
             modelAndView.addObject("film", new FilmDto());
         }
@@ -44,7 +45,7 @@ public class HomeController {
     }
     @PostMapping("/delete")
     public ModelAndView delete(@RequestParam(name = "idToDel")Integer id){
-        rep.deleteById(id);
+        dao.deleteById(id);
         return new ModelAndView("redirect:/home");
     }
 }
