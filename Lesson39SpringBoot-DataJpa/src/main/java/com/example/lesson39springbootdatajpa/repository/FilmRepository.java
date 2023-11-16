@@ -1,4 +1,4 @@
-package com.example.lesson39springbootdatajpa.dao;
+package com.example.lesson39springbootdatajpa.repository;
 
 import com.example.lesson39springbootdatajpa.entity.FilmEntity;
 import jakarta.transaction.Transactional;
@@ -13,7 +13,6 @@ import java.util.List;
 public interface FilmRepository extends JpaRepository<FilmEntity, Integer> {
 
     @Modifying
-    @Transactional
     @Query("UPDATE FilmEntity SET rating = :rating WHERE id = :id")
     void updateRatingById(Float rating, Integer id);
 

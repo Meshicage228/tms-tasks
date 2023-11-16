@@ -11,18 +11,18 @@
       style="width: 300px; height: 300px; margin: auto; padding: 10px;">
     <div class="form-group">
         <label for="exampleInputTitle">Film title</label>
-        <input type="text" th:field="*{title}" name="tit" class="form-control" id="exampleInputTitle"
+        <input type="text" th:field="*{title}" name="title" class="form-control" id="exampleInputTitle"
                aria-describedby="emailHelp"
                placeholder="Enter film title">
         <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Incorrect date</p>
     </div>
     <div class="form-group">
         <label for="exampleInput">Write date of creation</label>
-        <input type="text" th:field="*{dateOfCreation}" name="date" class="form-control" id="exampleInput"
+        <input type="text" th:field="*{dateOfCreation}" name="dateOfCreation" class="form-control" id="exampleInput"
                placeholder="Enter date of creation">
         <p th:if="${#fields.hasErrors('dateOfCreation')}" th:errors="*{dateOfCreation}">Incorrect date</p>
     </div>
-    <select th:field="*{genre}" name="gen" class="form-control">
+    <select th:field="*{genre}" name="genre" class="form-control">
         <option th:value="HORROR">Horror</option>
         <option th:value="COMEDY">Comedy</option>
         <option th:value="DRAMA">Drama</option>
