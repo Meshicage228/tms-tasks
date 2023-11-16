@@ -12,44 +12,46 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiredArgsConstructor
 
 @Controller
 @RequestMapping("/home")
 public class HomeController {
-    private final FilmRepository rep;
+   private final FilmDao dao;
     private final FilmMapper mapper;
     @GetMapping("")
     public ModelAndView getMainPage(@ModelAttribute("modelFilm")FilmDto filmDto){
         ModelAndView modelAndView = new ModelAndView("homePage");
 
-        modelAndView.addObject("films", mapper.listToDto(rep.findAllOrderByRating()));
+        modelAndView.addObject("films", mapper.listToDto(dao.getAll()));
         return modelAndView;
     }
     @PostMapping("/save")
-    public ModelAndView get(@Valid @ModelAttribute("modelFilm") FilmDto filmDto, BindingResult bindingResult){
-        ModelAndView modelAndView = new ModelAndView("homePage");
+    public ModelAndView get(@Valid @ModelAttribute(name = "film") FilmDto filmDto, BindingResult bindingResult){
+        ModelAndView modelAndView = new ModelAndView("redirect:/home");
         if(!bindingResult.hasFieldErrors()){
 
             FilmEntity entity = mapper.toEntity(filmDto);
 
-            rep.save(entity);
+            dao.save(entity);
 
             modelAndView.addObject("modelFilm", new FilmDto());
         }
-        modelAndView.addObject("films", mapper.listToDto(rep.findAllOrderByRating()));
+        modelAndView.addObject("films", mapper.listToDto(dao.getAll()));
         return modelAndView;
     }
     @PostMapping("/delete")
     public ModelAndView delete(@RequestParam(name = "idToDel")Integer id){
-        rep.deleteById(id);
+        dao.deleteById(id);
         return new ModelAndView("redirect:/home");
     }
     @PostMapping("/update/{idUpdate}")
     public ModelAndView update(@Valid @RequestParam(name = "ratingNew")Float rating,
                                @PathVariable(name = "idUpdate")Integer id){
-        rep.updateRatingById(rating, id);
+        dao.updateRatingById(rating, id);
         return new ModelAndView("redirect:/home");
     }
 }

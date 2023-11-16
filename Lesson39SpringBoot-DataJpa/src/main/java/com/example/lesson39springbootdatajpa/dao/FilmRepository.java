@@ -2,7 +2,6 @@ package com.example.lesson39springbootdatajpa.dao;
 
 import com.example.lesson39springbootdatajpa.entity.FilmEntity;
 import jakarta.transaction.Transactional;
-import org.hibernate.annotations.DialectOverride;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
