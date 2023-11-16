@@ -28,5 +28,5 @@ public interface FilmMapper {
     @Mapping(target = "rating", source = "rating")
     FilmEntity toEntity(FilmDto filmDto);
 
-    List<FilmDto> toDto(List<FilmEntity> entities);
+    List<FilmDto> listToDto(List<FilmEntity> employees);
 }

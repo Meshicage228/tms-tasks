@@ -1,8 +1,9 @@
 package com.example.lesson39springbootdatajpa.service.impl;
 
-import com.example.lesson39springbootdatajpa.dao.FilmRepository;
+import com.example.lesson39springbootdatajpa.repository.FilmRepository;
 import com.example.lesson39springbootdatajpa.entity.FilmEntity;
 import com.example.lesson39springbootdatajpa.service.FilmService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,4 +27,13 @@ public class FilmDao implements FilmService {
     public void save(FilmEntity filmEntity) {
         repository.save(filmEntity);
     }
+
+    @Transactional
+    public void updateRatingById(Float rating, Integer id) {
+        repository.updateRatingById(rating, id);
+    }
+    public List<FilmEntity> findAllOrderByRating(){
+        return repository.findAllOrderByRating();
+    }
+
 }
