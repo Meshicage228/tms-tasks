@@ -2,9 +2,9 @@ package com.example.lesson39springbootdatajpa.controllers;
 
 
 import com.example.lesson39springbootdatajpa.dto.FilmDto;
+import com.example.lesson39springbootdatajpa.dto.FilmSearchDto;
 import com.example.lesson39springbootdatajpa.entity.FilmEntity;
-import com.example.lesson39springbootdatajpa.mappers.FilmMapper;
-import com.example.lesson39springbootdatajpa.service.impl.FilmDao;
+import com.example.lesson39springbootdatajpa.service.impl.FilmServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -18,38 +18,51 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/home")
 public class HomeController {
-   private final FilmDao dao;
-    private final FilmMapper mapper;
-    @GetMapping("")
-    public ModelAndView getMainPage(@ModelAttribute("modelFilm")FilmDto filmDto){
-        ModelAndView modelAndView = new ModelAndView("homePage");
+    private final FilmServiceImpl service;
 
-        modelAndView.addObject("films", mapper.listToDto(dao.findAllOrderByRating()));
+    @GetMapping("")
+    public ModelAndView getMainPage(@ModelAttribute("modelFilm") FilmDto filmDto,
+                                    @ModelAttribute("searchFilm") FilmSearchDto dto) {
+        ModelAndView modelAndView = new ModelAndView("homePage");
+        modelAndView.addObject("films", service.getMapper().listToDto(service.findAllOrderByRating()));
         return modelAndView;
     }
+
     @PostMapping("/save")
-    public ModelAndView get(@Valid @ModelAttribute(name = "modelFilm") FilmDto filmDto, BindingResult bindingResult){
+    public ModelAndView get(@Valid @ModelAttribute(name = "modelFilm") FilmDto filmDto,
+                            BindingResult bindingResult,
+                            @ModelAttribute("searchFilm") FilmSearchDto dto) {
         ModelAndView modelAndView = new ModelAndView("homePage");
-        if(!bindingResult.hasFieldErrors()){
+        if (!bindingResult.hasFieldErrors()) {
 
-            FilmEntity entity = mapper.toEntity(filmDto);
+            FilmEntity entity = service.getMapper().toEntity(filmDto);
 
-            dao.save(entity);
+            service.save(entity);
 
             modelAndView.addObject("modelFilm", new FilmDto());
         }
-        modelAndView.addObject("films", mapper.listToDto(dao.findAllOrderByRating()));
+        modelAndView.addObject("films", service.getMapper().listToDto(service.findAllOrderByRating()));
         return modelAndView;
     }
+
     @PostMapping("/delete")
-    public ModelAndView delete(@RequestParam(name = "idToDel")Integer id){
-        dao.deleteById(id);
+    public ModelAndView delete(@RequestParam(name = "idToDel") Integer id) {
+        service.deleteById(id);
         return new ModelAndView("redirect:/home");
     }
+
     @PostMapping("/update/{idUpdate}")
-    public ModelAndView update(@RequestParam(name = "ratingNew")Float rating,
-                               @PathVariable(name = "idUpdate")Integer id){
-        dao.updateRatingById(rating, id);
+    public ModelAndView update(@RequestParam(name = "ratingNew") Float rating,
+                               @PathVariable(name = "idUpdate") Integer id) {
+        service.updateRatingById(rating, id);
         return new ModelAndView("redirect:/home");
+    }
+
+    @PostMapping("/search")
+    public ModelAndView search(@ModelAttribute("searchFilm")FilmSearchDto dto,
+                               @ModelAttribute("modelFilm") FilmDto film){
+        ModelAndView mainPage = getMainPage(film, dto);
+        mainPage.addObject("result", service.findByCriteria(dto));
+        return mainPage;
     }
 }

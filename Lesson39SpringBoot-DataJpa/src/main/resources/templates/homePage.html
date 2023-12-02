@@ -69,6 +69,59 @@
     </tbody>
 </table>
 
+<form method="post" th:action="@{/home/search}" th:object="${searchFilm}" class="content"
+      style="width: 300px; height: 300px; margin: auto; padding: 10px;">
+    <div class="form-group">
+        <label for="exampleInputTitleSearch">Film title</label>
+        <input type="text" th:field="*{title}" name="title" class="form-control" id="exampleInputTitleSearch"
+               aria-describedby="emailHelp"
+               placeholder="Enter film title">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputTitleSearch2">Write date of creation</label>
+        <input type="text" th:field="*{dateOfCreation}" name="dateOfCreation" class="form-control" id="exampleInputTitleSearch2"
+               placeholder="Enter date of creation">
+    </div>
+    <label for="gengreSearch">Write genre</label>
+    <input type="text" th:field="*{genre}" name="genre" class="form-control" id="gengreSearch"
+           placeholder="Enter genre">
+    <div class="form-group">
+        <label for="Search">Write rating from</label>
+        <input type="number" class="form-control" th:field="*{from}" name="rate"
+               placeholder="Enter rating from 0 to 10"
+               id="Search">
+    </div>
+    <div class="form-group">
+        <label for="Search2">Write rating to</label>
+        <input type="number" class="form-control" th:field="*{to}" name="rate"
+               placeholder="Enter rating from 0 to 10"
+               id="Search2">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br>
+<br>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Order</th>
+        <th scope="col">Film title</th>
+        <th scope="col">Genre</th>
+        <th scope="col">Date of creation</th>
+        <th scope="col">Rating</th>
+    </tr>
+    </thead>
+    <tbody th:each="f, rt : ${result}">
+    <tr>
+        <th scope="row" th:text="${rt.count}"></th>
+        <td th:text="${f.title}"></td>
+        <td th:text="${f.genre}"></td>
+        <td th:text="${f.dateOfCreation}"></td>
+        <td th:text="${f.rating}"></td>
+    </tr>
+    </tbody>
+</table>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
