@@ -24,7 +24,7 @@ public class HomeController {
     public ModelAndView getMainPage(@ModelAttribute("modelFilm") FilmDto filmDto,
                                     @ModelAttribute("searchFilm") FilmSearchDto dto) {
         ModelAndView modelAndView = new ModelAndView("homePage");
-        modelAndView.addObject("films", service.getMapper().listToDto(service.findAllOrderByRating()));
+        modelAndView.addObject("films", service.findAllOrderByRating());
         return modelAndView;
     }
 
@@ -41,7 +41,7 @@ public class HomeController {
 
             modelAndView.addObject("modelFilm", new FilmDto());
         }
-        modelAndView.addObject("films", service.getMapper().listToDto(service.findAllOrderByRating()));
+        modelAndView.addObject("films", service.findAllOrderByRating());
         return modelAndView;
     }
 

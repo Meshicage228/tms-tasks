@@ -1,6 +1,7 @@
 package com.example.lesson39springbootdatajpa.service.impl;
 
 import com.example.lesson39springbootdatajpa.domain.enums.Genre;
+import com.example.lesson39springbootdatajpa.dto.FilmDto;
 import com.example.lesson39springbootdatajpa.dto.FilmSearchDto;
 import com.example.lesson39springbootdatajpa.mappers.FilmMapper;
 import com.example.lesson39springbootdatajpa.repository.FilmRepository;
@@ -36,16 +37,16 @@ public class FilmServiceImpl implements FilmService {
     }
 
     @Override
-    public void save(FilmEntity filmEntity) {
-        repository.save(filmEntity);
+    public FilmEntity save(FilmEntity filmEntity) {
+        return repository.save(filmEntity);
     }
 
     @Transactional
     public void updateRatingById(Float rating, Integer id) {
         repository.updateRatingById(rating, id);
     }
-    public List<FilmEntity> findAllOrderByRating(){
-        return repository.findAllOrderByRating();
+    public List<FilmDto> findAllOrderByRating(){
+        return mapper.toDtos(repository.findAllOrderByRating());
     }
     public List<FilmEntity> findByCriteria(FilmSearchDto dto){
         return repository.findAll(createSpecification(dto));

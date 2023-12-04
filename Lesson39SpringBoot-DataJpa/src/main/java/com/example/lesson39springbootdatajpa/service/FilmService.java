@@ -8,7 +8,7 @@ import java.util.List;
 public interface FilmService {
     List<FilmEntity> getAll();
     void deleteById(Integer id);
-    void save(FilmEntity filmEntity);
+    FilmEntity save(FilmEntity filmEntity);
 
     List<FilmEntity> findByCriteria(FilmSearchDto dto);
 }

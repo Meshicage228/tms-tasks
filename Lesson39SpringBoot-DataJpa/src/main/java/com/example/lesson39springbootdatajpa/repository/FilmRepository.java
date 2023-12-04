@@ -17,6 +17,6 @@ public interface FilmRepository extends JpaRepository<FilmEntity, Integer>, JpaS
     @Query("UPDATE FilmEntity SET rating = :rating WHERE id = :id")
     void updateRatingById(Float rating, Integer id);
 
-    @Query(value = "SELECT* FROM films ORDER BY rating ASC", nativeQuery = true)
+    @Query(value = "SELECT * FROM films ORDER BY rating ASC", nativeQuery = true)
     List<FilmEntity> findAllOrderByRating();
 }

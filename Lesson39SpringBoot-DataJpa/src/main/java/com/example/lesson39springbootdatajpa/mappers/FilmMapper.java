@@ -5,7 +5,6 @@ import com.example.lesson39springbootdatajpa.dto.FilmDto;
 import com.example.lesson39springbootdatajpa.entity.FilmEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -28,5 +27,5 @@ public interface FilmMapper {
     @Mapping(target = "rating", source = "rating")
     FilmEntity toEntity(FilmDto filmDto);
 
-    List<FilmDto> listToDto(List<FilmEntity> employees);
+    List<FilmDto> toDtos(List<FilmEntity> employees);
 }
