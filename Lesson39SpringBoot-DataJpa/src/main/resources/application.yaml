@@ -12,10 +12,6 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-  mvc:
-    view:
-      prefix: /pages/
-      suffix: .html
 management:
   endpoints:
     web:

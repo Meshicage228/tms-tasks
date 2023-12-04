@@ -18,17 +18,17 @@ import lombok.NoArgsConstructor;
 @Builder
 
 public class FilmDto {
-    private Integer id;
 
-    @NotBlank(message = "Write title for film")
+    private Integer id;
+    @NotBlank(message = "Empty title")
     private String title;
 
     private Genre genre;
 
-    @NotBlank(message = "Enter year of creation")
+    @NotBlank(message = "Empty date")
     private String dateOfCreation;
 
-    @Min(value = 0, message = "Incorrect number") @Max(value = 10, message = "Incorrect number")
-    @NotNull(message = "Write rating for film")
+    @Min(value = 0, message = "Wrong Number") @Max(value = 10, message = "Wrong Number")
+    @NotNull(message = "Empty number")
     private Float rating;
 }
