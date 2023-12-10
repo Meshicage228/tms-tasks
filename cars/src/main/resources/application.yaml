@@ -1,0 +1,10 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/rest_cars
+    password: 28072004
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: create
