@@ -1,2 +1,14 @@
 server:
   port: 8080
+app:
+  clients:
+    user:
+      url : 127.0.0.1:8081
+      path : /cars
+      name : car-feign
+
+feign:
+  client:
+    config:
+      user-client:
+        loggerLevel : full

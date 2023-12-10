@@ -1,7 +1,7 @@
 package com.example.cars.service.impl;
 
 import com.example.cars.dto.CarDto;
-import com.example.cars.exception.SomethingWentWrongException;
+import com.example.cars.exception.CarGetIdException;
 import com.example.cars.mapper.CarMapper;
 import com.example.cars.model.CarEntity;
 import com.example.cars.repository.CarRepository;
@@ -30,7 +30,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public CarDto update(Integer id , CarDto dto) {
         CarEntity user = repository.findById(id)
-                .orElseThrow(() -> new SomethingWentWrongException("Didnt find user"));
+                .orElseThrow(() -> new CarGetIdException("Didnt find car"));
 
         mapper.update(user, dto);
 
@@ -40,7 +40,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public CarDto get(Integer id) {
         CarEntity user = repository.findById(id)
-                .orElseThrow(() -> new SomethingWentWrongException("Didnt find user"));
+                .orElseThrow(() -> new CarGetIdException("Didnt find car"));
 
         return mapper.toDto(user);
     }
@@ -48,7 +48,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public void delete(Integer id) {
         CarEntity user = repository.findById(id)
-                .orElseThrow(() -> new SomethingWentWrongException("Didnt find user"));
+                .orElseThrow(() -> new CarGetIdException("Didnt find car"));
 
         repository.delete(user);
     }
