@@ -5,6 +5,10 @@ build/
 !**/src/test/**/build/
 ### Personal Settings ###
 .gitignore
+gradlew
+gradlew.bat
+settings.gradle
+*/gradle/wrapper
 /.idea/dataSources*
 /.idea/shelf
 .idea/inspectionProfiles
