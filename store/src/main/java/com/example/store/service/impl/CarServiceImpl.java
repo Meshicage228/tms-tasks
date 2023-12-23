@@ -18,6 +18,11 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
+    public CarDto update(Integer id, CarDto dto) {
+        return template.update(id, dto);
+    }
+
+    @Override
     public List<CarDto> showAllCars() {
         return template.findAll();
     }

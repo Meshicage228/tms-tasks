@@ -1,4 +1,4 @@
-package com.example.store.exception;
+package com.example.store.exception.details;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
