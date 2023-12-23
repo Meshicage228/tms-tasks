@@ -4,6 +4,7 @@ import com.example.store.exception.BadWordException;
 import com.example.store.exception.CarGetIdException;
 import com.example.store.exception.details.BadWordExceptionDetails;
 import com.example.store.exception.details.ExceptionDetails;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -38,7 +39,7 @@ public class StoreExceptionHandler {
                 .build();
 
         return ResponseEntity
-                .status(code)
+                .status(HttpStatus.FORBIDDEN)
                 .body(except);
     }
 
