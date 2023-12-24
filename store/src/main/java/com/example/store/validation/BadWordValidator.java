@@ -19,7 +19,7 @@ public class BadWordValidator implements ConstraintValidator<CheckBadWordValidat
         String[] s = value.trim().split(" |\\,");
         for(String str : s){
             if(badWords.contains(str.toLowerCase())){
-                throw new BadWordException(context.getDefaultConstraintMessageTemplate() + " : " + str, 400);
+                return false;
             }
         }
         return true;
