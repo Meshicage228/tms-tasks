@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class StoreExceptionHandler {
     @ExceptionHandler(CarGetIdException.class)
-    public ResponseEntity<ExceptionDetails> getExc(CarGetIdException ex){
+    public ResponseEntity<ExceptionDetails> catchException(CarGetIdException ex){
         String message = ex.getMessage();
         ExceptionDetails excep = ExceptionDetails.builder()
                 .serviceName("car-service")
