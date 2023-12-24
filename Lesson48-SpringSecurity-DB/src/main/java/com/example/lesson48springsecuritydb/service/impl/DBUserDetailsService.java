@@ -22,14 +22,13 @@ public class DBUserDetailsService implements UserDetailsService, PersonService {
     private final PersonMapper mapper;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        List<PersonEntity> byUsername = repository.findByUsername(username);
-        return byUsername.size() == 1 ? byUsername.get(0) : null;
+        return repository.findByUsername(username).orElse(null);
     }
 
     @Override
     @Transactional
     public PersonDto save(PersonDto dto) {
-        List<PersonEntity> byUsername = repository.findByUsername(dto.getUsername());
+        List<PersonEntity> byUsername = repository.findAllByUsername(dto.getUsername());
         if(!byUsername.isEmpty()){
             throw new NotUniqueUsernameException("Not unique username exception!");
         }

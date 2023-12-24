@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ExceptionController {
     @ExceptionHandler(NotUniqueUsernameException.class)
-    public ResponseEntity<UsernameExceptionDescription> getException(NotUniqueUsernameException ex){
+    public ResponseEntity<UsernameExceptionDescription> catchException(NotUniqueUsernameException ex){
 
         UsernameExceptionDescription build = UsernameExceptionDescription.builder()
                 .message(ex.getMessage())

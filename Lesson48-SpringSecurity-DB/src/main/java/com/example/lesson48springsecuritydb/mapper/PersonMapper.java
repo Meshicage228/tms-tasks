@@ -3,6 +3,7 @@ package com.example.lesson48springsecuritydb.mapper;
 import com.example.lesson48springsecuritydb.dto.PersonDto;
 import com.example.lesson48springsecuritydb.model.PersonEntity;
 import org.mapstruct.AfterMapping;
+import org.mapstruct.BeforeMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
