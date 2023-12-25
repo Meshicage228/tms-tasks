@@ -1,6 +1,10 @@
 package com.example.store.dto;
 
 import com.example.store.model.Brand;
+import com.example.store.validation.CheckBadWordValidation;
+import com.example.store.validation.markers.OnCreate;
+import com.example.store.validation.markers.OnUpdate;
+import jakarta.validation.constraints.NotNull;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -26,4 +30,6 @@ public class CarDto {
     @Max(value = 4000)
     @Schema(name = "mileage", example = "1200", description = "add positive mileage", minimum = "0", maximum = "4000", required = true)
     private Float mileage;
+    @CheckBadWordValidation(groups = {OnCreate.class, OnUpdate.class})
+    private String description;
 }

@@ -13,4 +13,5 @@ public class CarDto {
     private Integer id;
     private Brand brand ;
     private Float mileage;
+    private String description;
 }

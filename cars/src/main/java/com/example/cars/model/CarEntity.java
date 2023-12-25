@@ -16,7 +16,8 @@ public class CarEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Enumerated(value = EnumType.STRING)
     private Brand brand;
     private Float mileage;
-
+    private String description;
 }
