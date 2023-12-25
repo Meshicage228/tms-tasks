@@ -2,13 +2,8 @@ package com.example.store.controllers;
 
 import com.example.store.dto.CarDto;
 import com.example.store.service.impl.CarServiceImpl;
-import com.example.store.validation.CheckBadWordValidation;
-import com.example.store.validation.markers.OnCreate;
-import com.example.store.validation.markers.OnUpdate;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +17,29 @@ public class StoreController {
     private final CarServiceImpl service;
     @PostMapping
     public ResponseEntity<CarDto> register(@Validated(value = OnCreate.class) @Valid @RequestBody CarDto dto){
+    @Operation(tags = "crud-operations",
+               description = "after running this app, better to create car first, or you will get an exception with get-by-id an delete endpoints",
+               summary = "to create car",
+               responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "car was created successfully",
+                            content = {
+                                    @Content(schema = @Schema(implementation = CarDto.class),
+                                             mediaType = "application/json")
+                            }
+                    ),
+                    @ApiResponse(
+                            responseCode = "400",
+                            description = "Brand doesnt exist",
+                            content = {
+                                    @Content(mediaType = "application/json",
+                                             schema = @Schema(implementation = ExceptionDetails.class))
+                            }
+                    )
+               }
+    )
+    public ResponseEntity<CarDto> register(@RequestBody CarDto dto){
         return ok(service.registerCar(dto));
     }
     @GetMapping
