@@ -6,28 +6,29 @@ import org.mapstruct.AfterMapping;
 import org.mapstruct.BeforeMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 @Mapper(
         componentModel = "spring"
 )
-public interface PersonMapper {
-    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+public abstract class PersonMapper {
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     @Mapping(target = "username", source = "username")
     @Mapping(target = "perm", defaultValue = "ROLE_USER")
-    @Mapping(target = "pass", expression = "java(encodePassword(dto.getPass()))")
-    PersonEntity toEntity(PersonDto dto);
+    @Mapping(target = "pass", expression = "java(encodePassword(dto))")
+    public abstract PersonEntity toEntity(PersonDto dto);
 
     @Mapping(target = "username", source = "username")
     @Mapping(target = "pass", source = "pass")
     @Mapping(target = "perm", source = "perm")
-    PersonDto toDto(PersonEntity entity);
+    public abstract PersonDto toDto(PersonEntity entity);
 
-    @AfterMapping
-    default String encodePassword(String source) {
-        return encoder.encode(source);
+    String encodePassword(PersonDto source) {
+        return encoder.encode(source.getPass());
     }
 
 }
