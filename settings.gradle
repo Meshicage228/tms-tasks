@@ -29,4 +29,5 @@ include 'Lesson29-SpringWeb'
 include 'Lesson29-SpringValidationShowUI'
 include 'Lesson31-HibernateBasics'
 include 'Lesson32-CRUD-HQL'
+include 'Lesson50-JUnit'
 
