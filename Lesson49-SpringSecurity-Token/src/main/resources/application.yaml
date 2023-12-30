@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    username: postgres
+    password: 28072004
+    url: jdbc:postgresql://localhost:5432/security_token
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+server:
+  port: 8080
+project:
+  secretKey : assgaasglnsaggasnklgsankasgnkgasnkasgknsdhnasgjahsgvbasghbnvxbzcnb
