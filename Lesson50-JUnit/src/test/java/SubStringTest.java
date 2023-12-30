@@ -1,48 +1,56 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SubStringTest {
     private final SubStringService service = new SubStringService();
 
     @Test
     public void noSuchSubstring() {
-        Assertions.assertEquals(-1, service.findSubString("HelLoW WorLd!", "dorm"));
+        assertEquals(-1, service.findSubString("HelLoW WorLd!", "dorm"));
     }
-
     @Test
     public void equalStrings() {
-        Assertions.assertEquals(0, service.findSubString("hello", "hello"));
+        assertEquals(0, service.findSubString("hello", "hello"));
     }
-
     @Test
     void upperCaseCheck() {
-        Assertions.assertEquals(0, service.findSubString("hello", "HELLO"));
-        Assertions.assertEquals(0, service.findSubString("HELLO", "hello"));
+        assertAll(
+                "Grouped checking strings ignoring case",
+                () -> assertEquals(0, service.findSubString("hello", "HELLO")),
+                () -> assertEquals(0, service.findSubString("HELLO", "hello"))
+        );
     }
-
     @Test
     public void biggerSubString() {
-        Assertions.assertEquals(-1, service.findSubString("Best technology", "Best technology i have ever met"));
+        assertEquals(-1, service.findSubString("Best technology", "Best technology i have ever met"));
     }
-
     @Test
     public void trimSpacesStrings() {
-        Assertions.assertNotEquals(3, service.findSubString("   Hello!", "Hello!"));
-        Assertions.assertNotEquals(6, service.findSubString("      s      ", "s"));
+        assertAll(
+                "Grouped checking strings with spaces",
+                () -> assertNotEquals(3, service.findSubString("   Hello!", "Hello!")),
+                () -> assertNotEquals(6, service.findSubString("      s      ", "s"))
+        );
     }
-
     @Test
     public void nullStrings() {
-        Assertions.assertEquals(-1, service.findSubString(null, "hello"));
-        Assertions.assertEquals(-1, service.findSubString("hello", null));
+        assertAll(
+                "Grouped checking strings with null",
+                () -> assertEquals(-1, service.findSubString(null, "hello")),
+                () -> assertEquals(-1, service.findSubString("hello", null))
+        );
     }
     @Test
-    public void emptyStrings(){
-        Assertions.assertEquals(-1, service.findSubString("", "hello"));
-        Assertions.assertEquals(-1, service.findSubString("hello", ""));
+    public void emptyStrings() {
+        assertAll(
+                "Grouped checking string with empty values",
+                () -> assertEquals(-1, service.findSubString("", "hello")),
+                () -> assertEquals(-1, service.findSubString("hello", ""))
+        );
     }
     @Test
-    public void manySubStrings(){
-        Assertions.assertEquals(0, service.findSubString("hello hello hello hello", "hello"));
+    public void manySubStrings() {
+        assertEquals(0, service.findSubString("hello hello hello hello", "hello"));
     }
 }
